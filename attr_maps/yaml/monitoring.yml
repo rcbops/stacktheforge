@@ -1,0 +1,10 @@
+---
+monitoring.metric_provider:
+  :default: none
+  :type: String
+monitoring.alarm_provider:
+  :default: none
+  :type: String
+monitoring.procmon_provider:
+  :default: monit
+  :type: String

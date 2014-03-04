@@ -1,0 +1,25 @@
+---
+ceph.services.radosgw.scheme:
+  :default: http
+  :type: String
+ceph.services.radosgw.network:
+  :default: management
+  :type: String
+ceph.services.radosgw.port:
+  :default: 80
+  :type: Fixnum
+ceph.services.radosgw.path:
+  :default: /v1/
+  :type: String
+ceph.service_tenant_name:
+  :default: service
+  :type: String
+ceph.service_user:
+  :default: swift
+  :type: String
+ceph.service_role:
+  :default: admin
+  :type: String
+ceph.service_pass:
+  :default: 
+  :type: NilClass

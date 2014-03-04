@@ -1,0 +1,547 @@
+---
+nova.network.provider:
+  :default: nova
+  :type: String
+  :stack_name: openstack.network.service_type
+  :stack_default: network
+  :stack_type: String
+nova.network.auto_assign_floating_ip:
+  :default: false
+  :type: FalseClass
+  :stack_name: openstack.compute.network.auto_assign_floating_ip
+  :stack_default: false
+  :stack_type: FalseClass
+nova.network.dhcp_domain:
+  :default: novalocal
+  :type: String
+  :stack_name: openstack.compute.dhcp_domain
+  :stack_default: {}
+  :stack_type: Hash
+  :notes:
+  - this variable isn't defined in stackforge, but is used in nova.conf template
+    if defined
+nova.network.dmz_cidr:
+  :default: 10.128.0.0/24
+  :type: String
+  :stack_name: openstack.compute.network.dmz_cidr
+  :stack_default: 10.128.0.0/24
+  :stack_type: String
+nova.network.force_dhcp_release:
+  :default: true
+  :type: TrueClass
+  :stack_name: openstack.compute.network.force_dhcp_release
+  :stack_default: true
+  :stack_type: TrueClass
+nova.network.network_manager:
+  :default: nova.network.manager.FlatDHCPManager
+  :type: String
+  :stack_name: openstack.compute.network.network_manager
+  :stack_default: nova.network.manager.FlatDHCPManager
+  :stack_type: String
+nova.network.public_interface:
+  :default: eth0
+  :type: String
+  :stack_name: openstack.compute.network.public_interface
+  :stack_default: eth0
+  :stack_type: String
+nova.network.send_arp_for_ha:
+  :default: true
+  :type: TrueClass
+  :notes:
+  - cookbook-openstack-compute/templates/default/nova.conf.erb:send_arp_for_ha=true
+nova.network.floating_pool_name:
+  :default: nova
+  :type: String
+  :notes:
+  - orphaned attribute, isn't used in rpc.
+  - equivalent would probably be: openstack.compute.network.neutron.public_network_name
+  - ==> cookbook-openstack-compute/templates/default/nova.conf.erb:default_floating_pool=<%=
+    node["openstack"]["compute"]["network"]["neutron"]["public_network_name"] %>
+nova.network.multi_host:
+  :default: true
+  :type: TrueClass
+  :stack_name: openstack.compute.network.multi_host
+  :stack_default: false
+  :stack_type: FalseClass
+nova.network.dhcp_lease_time:
+  :default: 120
+  :type: Fixnum
+nova.network.fixed_ip_disassociate_timeout:
+  :default: 600
+  :type: Fixnum
+neutron.network_api_class:
+  :default: nova.network.neutronv2.api.API
+  :type: String
+  :stack_name: openstack.compute.network.neutron.network_api_class
+  :stack_default: nova.network.neutronv2.api.API
+  :stack_type: String
+neutron.auth_strategy:
+  :default: keystone
+  :type: String
+  :notes:
+  - orphaned attribute in rpc; auth_strategy="keystone" hard-coded in neutron.conf.erb.
+  - commented default '#auth_strategy="keystone"' in stackforge
+neutron.libvirt_vif_type:
+  :default: ethernet
+  :type: String
+neutron.libvirt_vif_driver:
+  :default: nova.virt.libvirt.vif.LibvirtHybridOVSBridgeDriver
+  :type: String
+  :stack_name: openstack.compute.network.neutron.libvirt_vif_driver
+  :stack_default: nova.virt.libvirt.vif.LibvirtHybridOVSBridgeDriver
+  :stack_type: String
+neutron.linuxnet_interface_driver:
+  :default: nova.network.linux_net.LinuxOVSInterfaceDriver
+  :type: String
+  :stack_name: openstack.compute.network.neutron.linuxnet_interface_driver
+  :stack_default: nova.network.linux_net.LinuxOVSInterfaceDriver
+  :stack_type: String
+neutron.firewall_driver:
+  :default: nova.virt.firewall.NoopFirewallDriver
+  :type: String
+  :notes:
+  - cookbook-openstack-compute/templates/default/nova.conf.erb:firewall_driver = nova.virt.firewall.NoopFirewallDriver
+neutron.service_neutron_metadata_proxy:
+  :default: 'True'
+  :type: String
+  :stack_name: openstack.compute.network.neutron.service_neutron_metadata_proxy
+  :stack_default: true
+  :stack_type: TrueClass
+nova-network.platform.nova_network_packages:
+  :default:
+  - iptables
+  - nova-network
+  :type: Array
+  :stack_name: openstack.compute.platform.compute_network_packages
+  :stack_default:
+  - iptables
+  - nova-network
+  :stack_type: Array
+  :notes:
+  - A confusing, but related, stackforge attribute is `openstack.network.platform.nova_network_packages
+    (["nova-network"])' which is used to *PURGE* nova-network packages when neutron
+    is in use (openstack.network.service_type)
+nova-network.platform.nova_network_service:
+  :default: nova-network
+  :type: String
+  :stack_name: openstack.compute.platform.compute_network_service
+  :stack_default: nova-network
+  :stack_type: String
+nova-network.platform.nova_network_procmatch:
+  :default: ^((/usr/bin/)?python\d? )?(/usr/bin/)?nova-network\b
+  :type: String
+  :notes:
+  - openstack.compute.platform.compute_network_process_name doesn't exist
+rpcdaemon.check_interval:
+  :default: 1
+  :type: Fixnum
+rpcdaemon.queue_expire:
+  :default: 60
+  :type: Fixnum
+rpcdaemon.timeout:
+  :default: 20
+  :type: Fixnum
+neutron.notification.driver:
+  :default: no_op
+  :type: String
+  :notes:
+  - cookbook-openstack-network/templates/default/neutron.conf.erb:notification_driver
+    = neutron.openstack.common.notifier.rpc_notifier
+neutron.notification.topics:
+  :default: notifications
+  :type: String
+  :notes:
+  - cookbook-openstack-network/templates/default/neutron.conf.erb:notification_topics
+    = notifications
+neutron.security_group_api:
+  :default: neutron
+  :type: String
+  :stack_name: openstack.compute.network.neutron.security_group_api
+  :stack_default: neutron
+  :stack_type: String
+neutron.isolated_metadata:
+  :default: 'True'
+  :type: String
+  :stack_name: openstack.network.dhcp.enable_isolated_metadata
+  :stack_default: 'False'
+  :stack_type: String
+neutron.metadata_network:
+  :default: 'False'
+  :type: String
+  :stack_name: openstack.network.dhcp.enable_metadata_network
+  :stack_default: 'False'
+  :stack_type: String
+neutron.dnsmasq_lease_max:
+  :default: 16777216
+  :type: Fixnum
+neutron.agent_down_time:
+  :default: 30
+  :type: Fixnum
+  :stack_name: openstack.network.api.agent.agent_down_time
+  :stack_default: 15
+  :stack_type: Fixnum
+neutron.services.api.scheme:
+  :default: http
+  :type: String
+  :stack_name: openstack.endpoints.network-api.scheme
+  :stack_default: http
+  :stack_type: String
+neutron.services.api.port:
+  :default: 9696
+  :type: Fixnum
+  :stack_name: openstack.endpoints.network-api.port
+  :stack_default: '9696'
+  :stack_type: String
+neutron.services.api.path:
+  :default: ''
+  :type: String
+  :stack_name: openstack.endpoints.network-api.path
+  :stack_default: ''
+  :stack_type: String
+neutron.services.api.network:
+  :default: public
+  :type: String
+neutron.services.api.cert_file:
+  :default: neutron.pem
+  :type: String
+neutron.services.api.key_file:
+  :default: neutron.key
+  :type: String
+neutron.services.api.wsgi_file:
+  :default: neutron-server
+  :type: String
+neutron.db.name:
+  :default: neutron
+  :type: String
+  :stack_name: openstack.db.network.db_name
+  :stack_default: neutron
+  :stack_type: String
+neutron.db.username:
+  :default: neutron
+  :type: String
+  :stack_name: openstack.network.db.username
+  :stack_default: neutron
+  :stack_type: String
+neutron.service_tenant_name:
+  :default: service
+  :type: String
+  :stack_name: openstack.network.service_tenant_name
+  :stack_default: service
+  :stack_type: String
+neutron.service_user:
+  :default: neutron
+  :type: String
+  :stack_name: openstack.network.service_user
+  :stack_default: neutron
+  :stack_type: String
+neutron.service_role:
+  :default: admin
+  :type: String
+  :stack_name: openstack.network.service_role
+  :stack_default: admin
+  :stack_type: String
+neutron.debug:
+  :default: 'False'
+  :type: String
+  :stack_name: openstack.network.debug
+  :stack_default: 'False'
+  :stack_type: String
+neutron.verbose:
+  :default: 'False'
+  :type: String
+  :stack_name: openstack.network.verbose
+  :stack_default: 'False'
+  :stack_type: String
+neutron.overlap_ips:
+  :default: 'True'
+  :type: String
+  :stack_name: openstack.network.allow_overlapping_ips
+  :stack_default: 'False'
+  :stack_type: String
+neutron.use_namespaces:
+  :default: 'True'
+  :type: String
+  :stack_name: openstack.network.use_namespaces
+  :stack_default: 'True'
+  :stack_type: String
+neutron.plugin:
+  :default: ovs
+  :type: String
+  :notes:
+  - In RPC, there are conditionals in each agent template (dhcp, l3, lbaas) which
+    test this variable and then configure interface_driver accordingly (value hard-coded
+    in template).
+  - In StackForge, `openstack.network.interface_driver' is parameterized as default
+    attribute and templated directly into agent templates without conditional.
+  - ( However, LBaaS is currently an exception with its `openstack.network.lbaas_plugin'
+    attribute that is conditionally checked, similar to RPC. )
+neutron.dhcp_lease_time:
+  :default: '1440'
+  :type: String
+  :notes:
+  - cookbook-openstack-network/templates/default/neutron.conf.erb:# dhcp_lease_duration
+    = 120
+neutron.dhcp_domain:
+  :default: openstacklocal
+  :type: String
+  :stack_name: openstack.network.dhcp.default_domain
+  :stack_default: openstacklocal
+  :stack_type: String
+  :notes:
+  - this is for dhcp_agent.ini, not nova.conf.
+  - stackforge has a separate `openstack.compute.dhcp_domain' attribute for nova.conf
+    (which is not a default attribute declared anywhere).
+neutron.quota_items:
+  :default: network,subnet,port
+  :type: String
+  :stack_name: openstack.network.quota.items
+  :stack_default: network,subnet,port
+  :stack_type: String
+neutron.default_quota:
+  :default: '-1'
+  :type: String
+  :stack_name: openstack.network.quota.default
+  :stack_default: -1
+  :stack_type: Fixnum
+neutron.quota_network:
+  :default: '10'
+  :type: String
+  :stack_name: openstack.network.quota.network
+  :stack_default: 10
+  :stack_type: Fixnum
+neutron.quota_subnet:
+  :default: '10'
+  :type: String
+  :stack_name: openstack.network.quota.subnet
+  :stack_default: 10
+  :stack_type: Fixnum
+neutron.quota_port:
+  :default: '50'
+  :type: String
+  :stack_name: openstack.network.quota.port
+  :stack_default: 50
+  :stack_type: Fixnum
+neutron.quota_driver:
+  :default: neutron.db.quota_db.DbQuotaDriver
+  :type: String
+  :stack_name: openstack.network.quota.driver
+  :stack_default: neutron.quota.ConfDriver
+  :stack_type: String
+neutron.ovs.network_type:
+  :default: vlan
+  :type: String
+  :stack_name: openstack.network.openvswitch.tenant_network_type
+  :stack_default: local
+  :stack_type: String
+neutron.ovs.tunnel_ranges:
+  :default: 1:1000
+  :type: String
+  :stack_name: openstack.network.openvswitch.tunnel_id_ranges
+  :stack_default: 
+  :stack_type: NilClass
+neutron.ovs.integration_bridge:
+  :default: br-int
+  :type: String
+  :stack_name: openstack.network.openvswitch.integration_bridge
+  :stack_default: br-int
+  :stack_type: String
+neutron.ovs.tunnel_bridge:
+  :default: br-tun
+  :type: String
+  :stack_name: openstack.network.openvswitch.tunnel_bridge
+  :stack_default: br-tun
+  :stack_type: String
+neutron.ovs.external_bridge:
+  :default: br-ex
+  :type: String
+  :stack_name: openstack.network.l3.external_network_bridge
+  :stack_default: br-ex
+  :stack_type: String
+neutron.ovs.external_interface:
+  :default: eth1
+  :type: String
+  :stack_name: openstack.network.l3.external_network_bridge_interface
+  :stack_default: eth1
+  :stack_type: String
+neutron.ovs.network:
+  :default: nova
+  :type: String
+  :notes:
+  - this designates an osops network
+neutron.ovs.firewall_driver:
+  :default: neutron.agent.linux.iptables_firewall.OVSHybridIptablesFirewallDriver
+  :type: String
+  :stack_name: openstack.network.openvswitch.fw_driver
+  :stack_default: neutron.agent.linux.iptables_firewall.OVSHybridIptablesFirewallDriver
+  :stack_type: String
+neutron.ovs.provider_networks:
+  :default:
+  - label: ph-eth1
+    bridge: br-eth1
+    vlans: 1:1000
+  :type: Array
+  :notes:
+  - In RPC, these hashes get mapped to CSV strings for ovs_neutron_plugin.ini
+  - (also, this array is used by RPC for creating provider bridges with ovs-vsctl)
+  - In StackForge, the equivalent variable for ovs_neutron_plugin.ini is `openstack.network.openvswitch.bridge_mappings',
+    no provider bridges are created AFAICT
+neutron.lbaas.enabled:
+  :default: false
+  :type: FalseClass
+  :notes:
+  - StackForge has no equivalent; LBaaS is simply enabled by including the openstack-network::balancer
+    recipe.
+  - However, the boolean attribute `openstack.network.neutron_loadbalancer' is checked
+    within neutron.conf.erb to conditionally add the line `service_plugins = neutron.plugins.services.agent_loadbalancer.plugin.LoadBalancerPlugin'
+neutron.lbaas.device_driver:
+  :default: neutron.services.loadbalancer.drivers.haproxy.namespace_driver.HaproxyNSDriver
+  :type: String
+  :notes:
+  - cookbook-openstack-network/templates/default/lbaas_agent.ini.erb:device_driver
+    = neutron.plugins.services.agent_loadbalancer.drivers.haproxy.namespace_driver.HaproxyNSDriver
+neutron.platform.mysql_python_packages:
+  :default:
+  - python-mysqldb
+  :type: Array
+  :stack_name: openstack.network.platform.mysql_python_packages
+  :stack_default:
+  - python-mysqldb
+  :stack_type: Array
+neutron.platform.neutron_common_packages:
+  :default:
+  - python-neutronclient
+  - neutron-common
+  - python-neutron
+  :type: Array
+  :stack_name: openstack.network.platform.neutron_packages
+  :stack_default:
+  - neutron-common
+  - python-pyparsing
+  - python-cliff
+  :stack_type: Array
+  :notes:
+  - this RPC attr is also split between `openstack.network.platform.neutron_client_packages'
+    (["python-neutronclient","python-pyparsing"])
+neutron.platform.neutron_api_packages:
+  :default:
+  - neutron-server
+  :type: Array
+  :stack_name: openstack.network.platform.neutron_server_packages
+  :stack_default:
+  - neutron-server
+  :stack_type: Array
+neutron.platform.neutron_api_service:
+  :default: neutron-server
+  :type: String
+  :stack_name: openstack.network.platform.neutron_server_service
+  :stack_default: neutron-server
+  :stack_type: String
+neutron.platform.neutron_dhcp_packages:
+  :default:
+  - dnsmasq-base
+  - dnsmasq-utils
+  - libnetfilter-conntrack3
+  - neutron-dhcp-agent
+  :type: Array
+  :stack_name: openstack.network.platform.neutron_dhcp_packages
+  :stack_default:
+  - neutron-dhcp-agent
+  :stack_type: Array
+neutron.platform.neutron-dhcp-agent:
+  :default: neutron-dhcp-agent
+  :type: String
+  :stack_name: openstack.network.platform.neutron_dhcp_agent_service
+  :stack_default: neutron-dhcp-agent
+  :stack_type: String
+neutron.platform.neutron_l3_packages:
+  :default:
+  - neutron-l3-agent
+  :type: Array
+  :stack_name: openstack.network.platform.neutron_l3_packages
+  :stack_default:
+  - neutron-l3-agent
+  :stack_type: Array
+neutron.platform.neutron-l3-agent:
+  :default: neutron-l3-agent
+  :type: String
+  :stack_name: openstack.network.platform.neutron_l3_agent_service
+  :stack_default: neutron-l3-agent
+  :stack_type: String
+neutron.platform.neutron_lbaas_packages:
+  :default:
+  - neutron-lbaas-agent
+  :type: Array
+  :stack_name: openstack.network.platform.neutron_lb_packages
+  :stack_default:
+  - neutron-lbaas-agent
+  - haproxy
+  :stack_type: Array
+neutron.platform.neutron-lbaas-agent:
+  :default: neutron-lbaas-agent
+  :type: String
+  :notes:
+  - no attribute for openstack.network.platform.neutron_lb_agent_service
+neutron.platform.neutron_metadata_packages:
+  :default:
+  - neutron-metadata-agent
+  :type: Array
+  :stack_name: openstack.network.platform.neutron_metadata_agent_packages
+  :stack_default:
+  - neutron-metadata-agent
+  :stack_type: Array
+neutron.platform.neutron-metadata-agent:
+  :default: neutron-metadata-agent
+  :type: String
+  :stack_name: openstack.network.platform.neutron_metadata_agent_service
+  :stack_default: neutron-metadata-agent
+  :stack_type: String
+neutron.platform.package_options:
+  :default: -o Dpkg::Options::='--force-confold' -o Dpkg::Options::='--force-confdef'
+  :type: String
+  :stack_name: openstack.network.platform.package_overrides
+  :stack_default: -o Dpkg::Options::='--force-confold' -o Dpkg::Options::='--force-confdef'
+  :stack_type: String
+neutron.platform.neutron_ovs_packages:
+  :default:
+  - linux-headers-3.8
+  - openvswitch-datapath-dkms
+  - neutron-plugin-openvswitch
+  - neutron-plugin-openvswitch-agent
+  :type: Array
+  :notes:
+  - 'this attr is split into 3 attrs:'
+  - openstack.network.platform.neutron_openvswitch_packages (['openvswitch-switch','openvswitch-datapath-dkms','bridge-utils'])
+  - openstack.network.platform.neutron_openvswitch_build_packages (['build-essential','pkg-config','fakeroot','libssl-dev','openssl','debhelper','autoconf','dkms','python-all','python-qt4','python-zopeinterface','python-twisted-conch'])
+  - openstack.network.platform.neutron_openvswitch_agent_packages (['neutron-plugin-openvswitch','neutron-plugin-openvswitch-agent'])
+neutron.platform.neutron_ovs_service_name:
+  :default: neutron-plugin-openvswitch-agent
+  :type: String
+  :stack_name: openstack.network.platform.neutron_openvswitch_agent_service
+  :stack_default: neutron-plugin-openvswitch-agent
+  :stack_type: String
+neutron.platform.neutron_openvswitch_service_name:
+  :default: openvswitch-switch
+  :type: String
+  :stack_name: openstack.network.platform.neutron_openvswitch_service
+  :stack_default: openvswitch-switch
+  :stack_type: String
+neutron.platform.rpcdaemon:
+  :default: rpcdaemon
+  :type: String
+neutron.ssl.dir:
+  :default: /etc/ssl
+  :type: String
+neutron.ovs_use_veth:
+  :default: 'False'
+  :type: String
+  :stack_name: openstack.network.dhcp.ovs_use_veth
+  :stack_default: 'True'
+  :stack_type: String
+nova-network.platform.common_packages:
+  :default:
+  - nova-common
+  - python-nova
+  - python-novaclient
+  :type: Array
+  :notes:
+  - orphaned attribute, doesn't seem to be used in RPC

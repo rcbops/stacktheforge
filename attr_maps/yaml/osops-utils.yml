@@ -1,0 +1,110 @@
+---
+osops.apply_patches:
+  :default: false
+  :type: FalseClass
+osops.do_package_upgrades:
+  :default: false
+  :type: FalseClass
+osops.region:
+  :default: RegionOne
+  :type: String
+osops.platform.common_packages:
+  :default:
+  - python-eventlet
+  - python-ceilometerclient
+  - python-cinderclient
+  - python-glanceclient
+  - python-keystoneclient
+  - python-novaclient
+  - python-neutronclient
+  - python-mysqldb
+  - python-warlock
+  - curl
+  - python-keystone
+  - iputils-arping
+  :type: Array
+osops.platform.ssl_common_packages:
+  :default: []
+  :type: Array
+osops.platform.package_options:
+  :default: -o Dpkg::Options::='--force-confold' -o Dpkg::Options::='--force-confdef'
+  :type: String
+osops.apt_repos.osops.uri:
+  :default: http://ppa.launchpad.net/osops-packaging/ppa/ubuntu
+  :type: String
+osops.apt_repos.osops.distribution:
+  :default: precise
+  :type: String
+osops.apt_repos.osops.components:
+  :default:
+  - main
+  :type: Array
+osops.apt_repos.osops.keyserver:
+  :default: hkp://keyserver.ubuntu.com:80
+  :type: String
+osops.apt_repos.osops.key:
+  :default: 53E8EA35
+  :type: String
+osops.apt_repos.havana.uri:
+  :default: http://ubuntu-cloud.archive.canonical.com/ubuntu
+  :type: String
+osops.apt_repos.havana.distribution:
+  :default: precise-updates/havana
+  :type: String
+osops.apt_repos.havana.components:
+  :default:
+  - main
+  :type: Array
+osops.apt_repos.havana.keyserver:
+  :default: hkp://keyserver.ubuntu.com:80
+  :type: String
+osops.apt_repos.havana.key:
+  :default: EC4926EA
+  :type: String
+osops.apt_repos.rpc-extras.uri:
+  :default: http://download.opensuse.org/repositories/home:/rpcops:/havana/xUbuntu_12.04/
+  :type: String
+osops.apt_repos.rpc-extras.distribution:
+  :default: /
+  :type: String
+osops.apt_repos.rpc-extras.components:
+  :default: []
+  :type: Array
+osops.apt_repos.rpc-extras.key:
+  :default: http://download.opensuse.org/repositories/home:/rpcops:/havana//xUbuntu_12.04/Release.key
+  :type: String
+osops.apt_testing_repos.havana-proposed.uri:
+  :default: http://ubuntu-cloud.archive.canonical.com/ubuntu
+  :type: String
+osops.apt_testing_repos.havana-proposed.distribution:
+  :default: precise-proposed/havana
+  :type: String
+osops.apt_testing_repos.havana-proposed.components:
+  :default:
+  - main
+  :type: Array
+osops.apt_testing_repos.havana-proposed.keyserver:
+  :default: hkp://keyserver.ubuntu.com:80
+  :type: String
+osops.apt_testing_repos.havana-proposed.key:
+  :default: EC4926EA
+  :type: String
+osops.apt_testing_repos.havana-proposed-ppa.uri:
+  :default: http://ppa.launchpad.net/ubuntu-cloud-archive/havana-staging/ubuntu
+  :type: String
+osops.apt_testing_repos.havana-proposed-ppa.distribution:
+  :default: precise
+  :type: String
+osops.apt_testing_repos.havana-proposed-ppa.components:
+  :default:
+  - main
+  :type: Array
+osops.apt_testing_repos.havana-proposed-ppa.keyserver:
+  :default: hkp://keyserver.ubuntu.com:80
+  :type: String
+osops.apt_testing_repos.havana-proposed-ppa.key:
+  :default: 9F68104E
+  :type: String
+enable_testing_repos:
+  :default: false
+  :type: FalseClass

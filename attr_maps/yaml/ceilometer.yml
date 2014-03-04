@@ -1,0 +1,221 @@
+---
+ceilometer.db.name:
+  :default: ceilometer
+  :type: String
+  :stack_name: openstack.db.metering.db_name
+  :stack_default: ceilometer
+  :stack_type: String
+ceilometer.db.username:
+  :default: ceilometer
+  :type: String
+  :stack_name: openstack.metering.db.username
+  :stack_default: ceilometer
+  :stack_type: String
+ceilometer.notification.driver:
+  :default: no_op
+  :type: String
+ceilometer.notification.topics:
+  :default: notifications
+  :type: String
+  :notes:
+  - templates/default/ceilometer.conf.erb:notification_topics = notifications,glance_notifications
+ceilometer.service_tenant_name:
+  :default: service
+  :type: String
+  :stack_name: openstack.metering.service_tenant_name
+  :stack_default:
+  :stack_type: String
+  :notes:
+  - this attr is not defined in stackforge, but is used in cookbook-openstack-metering::common
+ceilometer.service_user:
+  :default: ceilometer
+  :type: String
+  :stack_name: openstack.metering.service_user
+  :stack_default:
+  :stack_type: String
+  :notes:
+  - this attr is not defined in stackforge, but is used in cookbook-openstack-metering::common
+ceilometer.service_role:
+  :default: admin
+  :type: String
+ceilometer.services.api.scheme:
+  :default: http
+  :type: String
+  :stack_name: openstack.endpoints.metering-api.scheme
+  :stack_default: http
+  :stack_type: String
+ceilometer.services.api.port:
+  :default: 8777
+  :type: Fixnum
+  :stack_name: openstack.endpoints.metering-api.port
+  :stack_default: '8777'
+  :stack_type: String
+ceilometer.services.api.path:
+  :default: ''
+  :type: String
+  :stack_name: openstack.endpoints.metering-api.path
+  :stack_default: /v1
+  :stack_type: String
+ceilometer.services.api.network:
+  :default: public
+  :type: String
+ceilometer.services.api.cert_file:
+  :default: ceilometer.pem
+  :type: String
+ceilometer.services.api.key_file:
+  :default: ceilometer.key
+  :type: String
+ceilometer.services.api.wsgi_file:
+  :default: ceilometer-api
+  :type: String
+ceilometer.services.internal-api.scheme:
+  :default: http
+  :type: String
+ceilometer.services.internal-api.port:
+  :default: 8777
+  :type: Fixnum
+ceilometer.services.internal-api.path:
+  :default: ''
+  :type: String
+ceilometer.services.internal-api.network:
+  :default: management
+  :type: String
+ceilometer.services.admin-api.scheme:
+  :default: http
+  :type: String
+ceilometer.services.admin-api.port:
+  :default: 8777
+  :type: Fixnum
+ceilometer.services.admin-api.path:
+  :default: ''
+  :type: String
+ceilometer.services.admin-api.network:
+  :default: management
+  :type: String
+ceilometer.services.central.scheme:
+  :default: tcp
+  :type: String
+ceilometer.services.central.port:
+  :default: 8777
+  :type: Fixnum
+ceilometer.services.central.network:
+  :default: management
+  :type: String
+ceilometer.syslog.use:
+  :default: true
+  :type: TrueClass
+  :stack_name: openstack.metering.syslog.use
+  :stack_default: false
+  :stack_type: FalseClass
+ceilometer.syslog.facility:
+  :default: LOG_LOCAL3
+  :type: String
+ceilometer.logging.debug:
+  :default: 'false'
+  :type: String
+  :stack_name: openstack.metering.debug
+  :stack_default:
+  :stack_type: String
+  :notes:
+  - this attr is not defined in stackforge, but is used in ceilometer.conf template
+ceilometer.logging.verbose:
+  :default: 'true'
+  :type: String
+  :notes:
+  - templates/default/ceilometer.conf.erb:verbose = True
+ceilometer.platform.supporting_packages:
+  :default:
+  - ceilometer-common
+  - python-mysqldb
+  - python-ceilometerclient
+  :type: Array
+  :stack_name: openstack.metering.platform.common_packages
+  :stack_default:
+  - ceilometer-common
+  :stack_type: Array
+ceilometer.platform.central_agent_package_list:
+  :default:
+  - ceilometer-agent-central
+  :type: Array
+  :stack_name: openstack.metering.platform.agent_central_packages
+  :stack_default:
+  - ceilometer-agent-central
+  :stack_type: Array
+ceilometer.platform.central_agent_service:
+  :default: ceilometer-agent-central
+  :type: String
+  :stack_name: openstack.metering.platform.agent_central_service
+  :stack_default: ceilometer-agent-central
+  :stack_type: String
+ceilometer.platform.central_agent_procmatch:
+  :default: ^((/usr/bin/)?python\d? )?(/usr/bin/)?ceilometer-agent-central\b
+  :type: String
+  :notes:
+  - there is no openstack.metering.platform.agent_central_process_name variable
+ceilometer.platform.collector_package_list:
+  :default:
+  - ceilometer-collector
+  :type: Array
+  :stack_name: openstack.metering.platform.collector_packages
+  :stack_default:
+  - ceilometer-collector
+  - python-mysqldb
+  :stack_type: Array
+ceilometer.platform.collector_service:
+  :default: ceilometer-collector
+  :type: String
+  :stack_name: openstack.metering.platform.collector_service
+  :stack_default: ceilometer-collector
+  :stack_type: String
+ceilometer.platform.collector_procmatch:
+  :default: ^((/usr/bin/)?python\d? )?(/usr/bin/)?ceilometer-collector\b
+  :type: String
+  :notes:
+  - there is no openstack.metering.platform.collector_process_name variable
+ceilometer.platform.api_package_list:
+  :default:
+  - ceilometer-api
+  :type: Array
+  :stack_name: openstack.metering.platform.api_packages
+  :stack_default:
+  - ceilometer-api
+  :stack_type: Array
+ceilometer.platform.api_service:
+  :default: ceilometer-api
+  :type: String
+  :stack_name: openstack.metering.platform.api_service
+  :stack_default: ceilometer-api
+  :stack_type: String
+ceilometer.platform.api_procmatch:
+  :default: ^((/usr/bin/)?python\d? )?(/usr/bin/)?ceilometer-api\b
+  :type: String
+  :notes:
+  - there is no openstack.metering.platform.api_process_name variable
+ceilometer.platform.compute_package_list:
+  :default:
+  - ceilometer-agent-compute
+  :type: Array
+  :stack_name: openstack.metering.platform.agent_compute_packages
+  :stack_default:
+  - ceilometer-agent-compute
+  :stack_type: Array
+ceilometer.platform.compute_service:
+  :default: ceilometer-agent-compute
+  :type: String
+  :stack_name: openstack.metering.platform.agent_compute_service
+  :stack_default: ceilometer-agent-compute
+  :stack_type: String
+ceilometer.platform.compute_procmatch:
+  :default: ^((/usr/bin/)?python\d? )?(/usr/bin/)?ceilometer-agent-compute\b
+  :type: String
+  :notes:
+  - there is no openstack.metering.platform.compute_process_name variable
+ceilometer.platform.service_bin:
+  :default: /usr/sbin/service
+  :type: String
+ceilometer.platform.package_options:
+  :default: -o Dpkg::Options:='--force-confold' -o Dpkg::Options:='--force-confdef'
+  :type: String
+ceilometer.ssl.dir:
+  :default: /etc/ssl
+  :type: String

@@ -1,0 +1,408 @@
+---
+enable_monit:
+  :default: false
+  :type: FalseClass
+cinder.rabbitmq.use_ha_queues:
+  :default: false
+  :type: FalseClass
+  :stack_name: openstack.block-storage.rabbit.ha
+  :stack_default: false
+  :stack_type: FalseClass
+cinder.notification.driver:
+  :default: no_op
+  :type: String
+  :notes:
+  - cookbook-openstack-block-storage/templates/default/cinder.conf.erb:notification_driver=cinder.openstack.common.notifier.rpc_notifier
+cinder.notification.topics:
+  :default: notifications
+  :type: String
+  :notes:
+  - cookbook-openstack-block-storage/templates/default/cinder.conf.erb:# notification_topics=notifications
+cinder.policy:
+  :default: policy.json
+  :type: String
+  :notes:
+  - cookbook-openstack-block-storage/recipes/api.rb:template "/etc/cinder/policy.json"
+    do
+cinder.storage.provider:
+  :default: lvm
+  :type: String
+cinder.storage.iscsi.ip_address:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.block-storage.volume.iscsi_ip_address
+  :stack_default: node['ipaddress']
+  :stack_type: String
+cinder.storage.enable_multipath:
+  :default: false
+  :type: FalseClass
+cinder.storage.lvm.volume_group:
+  :default: cinder-volumes
+  :type: String
+  :stack_name: openstack.block-storage.volume.volume_group
+  :stack_default: cinder-volumes
+  :stack_type: String
+cinder.storage.lvm.volume_clear:
+  :default: zero
+  :type: String
+cinder.storage.lvm.volume_clear_size:
+  :default: 0
+  :type: Fixnum
+cinder.storage.lvm.mirrors:
+  :default: 0
+  :type: Fixnum
+cinder.storage.lvm.config:
+  :default: /etc/lvm/lvm.conf
+  :type: String
+cinder.storage.lvm.pool_size:
+  :default: None
+  :type: String
+cinder.storage.lvm.volume_driver:
+  :default: cinder.volume.drivers.lvm.LVMISCSIDriver
+  :type: String
+  :stack_name: openstack.block-storage.volume.driver
+  :stack_default: cinder.volume.driver.ISCSIDriver
+  :stack_type: String
+cinder.storage.solidfire.mvip:
+  :default: ''
+  :type: String
+  :notes:
+  - cookbook-openstack-block-storage/templates/default/cinder.conf.erb:# sf_mvip=
+cinder.storage.solidfire.username:
+  :default: ''
+  :type: String
+cinder.storage.solidfire.password:
+  :default: ''
+  :type: String
+cinder.storage.emc.config:
+  :default: /etc/cinder/cinder_emc_config.xml
+  :type: String
+cinder.storage.emc.StorageType:
+  :default: 
+  :type: NilClass
+cinder.storage.emc.EcomServerIP:
+  :default: 
+  :type: NilClass
+cinder.storage.emc.EcomServerPort:
+  :default: 5988
+  :type: Fixnum
+cinder.storage.emc.EcomUserName:
+  :default: admin
+  :type: String
+cinder.storage.emc.EcomPassword:
+  :default: 
+  :type: NilClass
+cinder.storage.emc.MaskingView:
+  :default: 
+  :type: NilClass
+cinder.storage.emc.packages:
+  :default:
+  - python-pywbem
+  :type: Array
+cinder.storage.netapp.iscsi.wsdl_url:
+  :default: ''
+  :type: String
+  :notes:
+  - cookbook-openstack-block-storage/templates/default/cinder.conf.erb:netapp_wsdl_url=<%=
+    node["openstack"]["block-storage"]["netapp"]["protocol"] %>://<%= node["openstack"]["block-storage"]["netapp"]["dfm_hostname"]
+    %>:<%= node["openstack"]["block-storage"]["netapp"]["dfm_web_port"] %>/dfm.wsdl
+  - openstack.block-storage.netapp.protocol = http
+  - openstack.block-storage.netapp.dfm_hostname = nil
+  - openstack.block-storage.netapp.dfm_web_port = 8080
+cinder.storage.netapp.iscsi.login:
+  :default: root
+  :type: String
+  :stack_name: openstack.block-storage.netapp.dfm_login
+  :stack_default: 
+  :stack_type: NilClass
+cinder.storage.netapp.iscsi.password:
+  :default: ''
+  :type: String
+  :stack_name: openstack.block-storage.netapp.dfm_password
+  :stack_default: 
+  :stack_type: NilClass
+cinder.storage.netapp.iscsi.server_hostname:
+  :default: ''
+  :type: String
+  :stack_name: openstack.block-storage.netapp.dfm_hostname
+  :stack_default: 
+  :stack_type: NilClass
+cinder.storage.netapp.iscsi.server_port:
+  :default: '8088'
+  :type: String
+  :stack_name: openstack.block-storage.netapp.dfm_port
+  :stack_default: '8088'
+  :stack_type: String
+cinder.storage.netapp.iscsi.storage_service:
+  :default: ''
+  :type: String
+  :stack_name: openstack.block-storage.netapp.storage_service
+  :stack_default: storage_service
+  :stack_type: String
+cinder.storage.netapp.nfsdirect.server_hostname:
+  :default: ''
+  :type: String
+  :stack_name: openstack.block-storage.netapp.netapp_server_hostname
+  :stack_default: 
+  :stack_type: NilClass
+cinder.storage.netapp.nfsdirect.port:
+  :default: '443'
+  :type: String
+  :stack_name: openstack.block-storage.netapp.netapp_server_port
+  :stack_default: '80'
+  :stack_type: String
+cinder.storage.netapp.nfsdirect.login:
+  :default: ''
+  :type: String
+  :stack_name: openstack.block-storage.netapp.netapp_server_login
+  :stack_default: 
+  :stack_type: NilClass
+cinder.storage.netapp.nfsdirect.password:
+  :default: ''
+  :type: String
+  :stack_name: openstack.block-storage.netapp.netapp_server_password
+  :stack_default: 
+  :stack_type: NilClass
+cinder.storage.netapp.nfsdirect.transport_type:
+  :default: https
+  :type: String
+cinder.storage.netapp.nfsdirect.nfs_shares_config:
+  :default: /etc/cinder/shares.txt
+  :type: String
+  :stack_name: openstack.block-storage.nfs.shares_config
+  :stack_default: /etc/cinder/shares.conf
+  :stack_type: String
+cinder.storage.netapp.nfsdirect.export:
+  :default: ''
+  :type: String
+  :stack_name: openstack.block-storage.netapp.export
+  :stack_default: 
+  :stack_type: NilClass
+cinder.storage.netapp.nfsdirect.packages:
+  :default:
+  - nfs-common
+  :type: Array
+  :stack_name: openstack.block-storage.platform.cinder_nfs_packages
+  :stack_default:
+  - nfs-common
+  :stack_type: Array
+cinder.storage.rbd.rbd_pool:
+  :default: volumes
+  :type: String
+  :stack_name: openstack.block-storage.rbd_pool
+  :stack_default: rbd
+  :stack_type: String
+cinder.storage.rbd.rbd_user:
+  :default: volumes
+  :type: String
+  :stack_name: openstack.block-storage.rbd_user
+  :stack_default: 
+  :stack_type: NilClass
+cinder.storage.rbd.rbd_pool_pg_num:
+  :default: '1000'
+  :type: String
+cinder.storage.rbd.rbd_secret_uuid:
+  :default: ''
+  :type: String
+  :stack_name: openstack.block-storage.rbd_secret_uuid
+  :stack_default: 
+  :stack_type: NilClass
+cinder.db.name:
+  :default: cinder
+  :type: String
+  :stack_name: openstack.db.volume.db_name
+  :stack_default: cinder
+  :stack_type: String
+cinder.db.username:
+  :default: cinder
+  :type: String
+  :stack_name: openstack.block-storage.db.username
+  :stack_default: cinder
+  :stack_type: String
+cinder.service_tenant_name:
+  :default: service
+  :type: String
+  :stack_name: openstack.block-storage.service_tenant_name
+  :stack_default: service
+  :stack_type: String
+cinder.service_user:
+  :default: cinder
+  :type: String
+  :stack_name: openstack.block-storage.service_user
+  :stack_default: cinder
+  :stack_type: String
+cinder.service_role:
+  :default: admin
+  :type: String
+  :stack_name: openstack.block-storage.service_role
+  :stack_default: admin
+  :stack_type: String
+cinder.services.api.scheme:
+  :default: http
+  :type: String
+  :stack_name: openstack.endpoints.volume-api.scheme
+  :stack_default: http
+  :stack_type: String
+cinder.services.api.network:
+  :default: public
+  :type: String
+cinder.services.api.port:
+  :default: 8776
+  :type: Fixnum
+  :stack_name: openstack.endpoints.volume-api.port
+  :stack_default: '8776'
+  :stack_type: String
+cinder.services.api.path:
+  :default: /v1/%(tenant_id)s
+  :type: String
+  :stack_name: openstack.endpoints.volume-api.path
+  :stack_default: /v1/%(tenant_id)s
+  :stack_type: String
+cinder.services.api.cert_file:
+  :default: cinder.pem
+  :type: String
+cinder.services.api.key_file:
+  :default: cinder.key
+  :type: String
+cinder.services.api.wsgi_file:
+  :default: cinder-api
+  :type: String
+cinder.services.internal-api.scheme:
+  :default: http
+  :type: String
+cinder.services.internal-api.network:
+  :default: management
+  :type: String
+cinder.services.internal-api.port:
+  :default: 8776
+  :type: Fixnum
+cinder.services.internal-api.path:
+  :default: /v1/%(tenant_id)s
+  :type: String
+cinder.services.admin-api.scheme:
+  :default: http
+  :type: String
+cinder.services.admin-api.network:
+  :default: management
+  :type: String
+cinder.services.admin-api.port:
+  :default: 8776
+  :type: Fixnum
+cinder.services.admin-api.path:
+  :default: /v1/%(tenant_id)s
+  :type: String
+cinder.services.volume.network:
+  :default: management
+  :type: String
+cinder.config.log_verbosity:
+  :default: INFO
+  :type: String
+  :notes:
+  - cinder.config.log_verbosity isn't ever used in RPC recipes;
+  - the value 'True' is hard-coded in the cinder.conf template.
+cinder.config.storage_availability_zone:
+  :default: nova
+  :type: String
+  :stack_name: openstack.block-storage.storage_availability_zone
+  :stack_default: nova
+  :stack_type: String
+cinder.config.max_gigabytes:
+  :default: '10000'
+  :type: String
+  :stack_name: openstack.block-storage.max_gigabytes
+  :stack_default: '10000'
+  :stack_type: String
+cinder.platform.cinder_common_packages:
+  :default:
+  - cinder-common
+  :type: Array
+  :stack_name: openstack.block-storage.platform.cinder_common_packages
+  :stack_default:
+  - cinder-common
+  :stack_type: Array
+cinder.platform.cinder_api_packages:
+  :default:
+  - cinder-api
+  :type: Array
+  :stack_name: openstack.block-storage.platform.cinder_api_packages
+  :stack_default:
+  - cinder-api
+  - python-cinderclient
+  :stack_type: Array
+cinder.platform.cinder_api_service:
+  :default: cinder-api
+  :type: String
+  :stack_name: openstack.block-storage.platform.cinder_api_service
+  :stack_default: cinder-api
+  :stack_type: String
+cinder.platform.cinder_api_procmatch:
+  :default: ^((/usr/bin/)?python\d? )?(/usr/bin/)?cinder-api\b
+  :type: String
+cinder.platform.cinder_volume_packages:
+  :default:
+  - cinder-volume
+  - open-iscsi
+  - qemu-utils
+  - sysfsutils
+  :type: Array
+  :stack_name: openstack.block-storage.platform.cinder_volume_packages
+  :stack_default:
+  - cinder-volume
+  :stack_type: Array
+cinder.platform.cinder_volume_service:
+  :default: cinder-volume
+  :type: String
+  :stack_name: openstack.block-storage.platform.cinder_volume_service
+  :stack_default: cinder-volume
+  :stack_type: String
+cinder.platform.cinder_volume_procmatch:
+  :default: ^((/usr/bin/)?python\d? )?(/usr/bin/)?cinder-volume\b
+  :type: String
+cinder.platform.cinder_scheduler_packages:
+  :default:
+  - cinder-scheduler
+  :type: Array
+  :stack_name: openstack.block-storage.platform.cinder_scheduler_packages
+  :stack_default:
+  - cinder-scheduler
+  :stack_type: Array
+cinder.platform.cinder_scheduler_service:
+  :default: cinder-scheduler
+  :type: String
+  :stack_name: openstack.block-storage.platform.cinder_scheduler_service
+  :stack_default: cinder-scheduler
+  :stack_type: String
+cinder.platform.cinder_scheduler_procmatch:
+  :default: ^((/usr/bin/)?python\d? )?(/usr/bin/)?cinder-scheduler\b
+  :type: String
+cinder.platform.cinder_iscsitarget_packages:
+  :default:
+  - tgt
+  :type: Array
+  :stack_name: openstack.block-storage.platform.cinder_iscsitarget_packages
+  :stack_default:
+  - tgt
+  :stack_type: Array
+cinder.platform.cinder_iscsitarget_service:
+  :default: tgt
+  :type: String
+  :stack_name: openstack.block-storage.platform.cinder_iscsitarget_service
+  :stack_default: tgt
+  :stack_type: String
+cinder.platform.supporting_packages:
+  :default:
+  - python-cinderclient
+  - python-mysqldb
+  :type: Array
+  :notes:
+  - openstack.block-storage.platform.mysql_python_packages = ["python-mysqldb"]
+  - openstack.block-storage.platform.cinder_api_packages = ["cinder-api", "python-cinderclient"]
+cinder.platform.package_options:
+  :default: -o Dpkg::Options::='--force-confold' -o Dpkg::Options::='--force-confdef'
+  :type: String
+  :notes:
+  - openstack.block-storage.platform.package_overrides = -o Dpkg::Options::='--force-confold'
+    -o Dpkg::Options::='--force-confdef'
+cinder.ssl.dir:
+  :default: /etc/ssl
+  :type: String

@@ -1,0 +1,86 @@
+---
+statsd.flush_interval:
+  :default: 60
+  :type: Fixnum
+statsd.services.statsd.port:
+  :default: 8125
+  :type: Fixnum
+  :notes:
+  - SF attribute swift.statistics.statsd_port,
+  - but don't think it serves the same purpose.
+statsd.services.statsd.network:
+  :default: management
+  :type: String
+graphite.services.api.port:
+  :default: 80
+  :type: Fixnum
+graphite.services.api.network:
+  :default: management
+  :type: String
+graphite.platform.carbon_packages:
+  :default:
+  - python-carbon
+  :type: Array
+graphite.platform.carbon_apache_user:
+  :default: www-data
+  :type: String
+graphite.platform.carbon_conf_dir:
+  :default: /etc/carbon
+  :type: String
+graphite.platform.carbon_log_dir:
+  :default: /var/log/carbon/carbon
+  :type: String
+graphite.platform.graphite_packages:
+  :default:
+  - python-cairo
+  - graphite
+  :type: Array
+graphite.platform.graphite_pythonpath:
+  :default: /usr/share/graphite/webapp
+  :type: String
+graphite.platform.graphite_root:
+  :default: /var/lib/graphite
+  :type: String
+graphite.platform.graphite_log_dir:
+  :default: /var/lib/graphite/storage/log/webapp
+  :type: String
+graphite.platform.whisper_packages:
+  :default:
+  - python-whisper
+  :type: Array
+graphite.platform.statsd_service:
+  :default: statsd
+  :type: String
+graphite.platform.statsd_template:
+  :default: /etc/default/statsd
+  :type: String
+graphite.platform.package_options:
+  :default: -o Dpkg::Options::='--force-confold' -o Dpkg::Options::='--force-confdef'
+  :type: String
+carbon.services.line-receiver.port:
+  :default: 2003
+  :type: Fixnum
+carbon.services.line-receiver.network:
+  :default: management
+  :type: String
+carbon.services.pickle-receiver.port:
+  :default: 2004
+  :type: Fixnum
+carbon.services.pickle-receiver.network:
+  :default: management
+  :type: String
+carbon.services.cache-query.port:
+  :default: 7002
+  :type: Fixnum
+carbon.services.cache-query.network:
+  :default: management
+  :type: String
+carbon.storage_schemas.everything_1min_1day.priority:
+  :default: '100'
+  :type: String
+carbon.storage_schemas.everything_1min_1day.pattern:
+  :default: .*
+  :type: String
+carbon.storage_schemas.everything_1min_1day.retentions:
+  :default: 60:1440
+  :type: String

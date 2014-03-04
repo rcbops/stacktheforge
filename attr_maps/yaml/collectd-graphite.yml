@@ -1,0 +1,4 @@
+---
+collectd.services.network-listener.network:
+  :default: management
+  :type: String

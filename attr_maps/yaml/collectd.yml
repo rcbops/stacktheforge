@@ -1,0 +1,44 @@
+---
+monitoring.configs:
+  :default: []
+  :type: Array
+collectd.types_db:
+  :default: /usr/share/collectd/types.db
+  :type: String
+collectd.interval:
+  :default: 10
+  :type: Fixnum
+collectd.read_threads:
+  :default: 5
+  :type: Fixnum
+collectd.is_proxy:
+  :default: true
+  :type: TrueClass
+collectd.remote.ip:
+  :default: 1.2.3.4
+  :type: String
+collectd.timeout:
+  :default: 30
+  :type: Fixnum
+collectd.collectd_web.path:
+  :default: /srv/collectd_web
+  :type: String
+collectd.collectd_web.hostname:
+  :default: collectd
+  :type: String
+collectd.platform.collectd_packages:
+  :default:
+  - collectd-core
+  :type: Array
+collectd.platform.collectd_base_dir:
+  :default: /var/lib/collectd
+  :type: String
+collectd.platform.collectd_plugin_dir:
+  :default: /usr/lib/collectd
+  :type: String
+collectd.platform.collectd_config_file:
+  :default: /etc/collectd/collectd.conf
+  :type: String
+collectd.platform.package_options:
+  :default: -o Dpkg::Options::='--force-confold' -o Dpkg::Options::='--force-confdef'
+  :type: String

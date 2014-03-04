@@ -1,0 +1,304 @@
+---
+glance.rabbitmq.use_ha_queues:
+  :default: false
+  :type: FalseClass
+glance.use_debug:
+  :default: 'False'
+  :type: String
+  :stack_name: openstack.image.debug
+  :stack_default: 'False'
+  :stack_type: String
+glance.services.api.scheme:
+  :default: http
+  :type: String
+  :stack_name: openstack.endpoints.image-api.scheme
+  :stack_default: http
+  :stack_type: String
+glance.services.api.network:
+  :default: public
+  :type: String
+glance.services.api.port:
+  :default: 9292
+  :type: Fixnum
+  :stack_name: openstack.endpoints.image-api.port
+  :stack_default: '9292'
+  :stack_type: String
+glance.services.api.path:
+  :default: ''
+  :type: String
+  :stack_name: openstack.endpoints.image-api.path
+  :stack_default: /v2
+  :stack_type: String
+glance.services.api.cert_file:
+  :default: glance.pem
+  :type: String
+glance.services.api.key_file:
+  :default: glance.key
+  :type: String
+glance.services.api.chain_file:
+  :default: ''
+  :type: String
+glance.services.api.wsgi_file:
+  :default: glance-api
+  :type: String
+glance.services.admin-api.scheme:
+  :default: http
+  :type: String
+glance.services.admin-api.network:
+  :default: management
+  :type: String
+glance.services.admin-api.port:
+  :default: 9292
+  :type: Fixnum
+glance.services.admin-api.path:
+  :default: ''
+  :type: String
+glance.services.internal-api.scheme:
+  :default: http
+  :type: String
+glance.services.internal-api.network:
+  :default: management
+  :type: String
+glance.services.internal-api.port:
+  :default: 9292
+  :type: Fixnum
+glance.services.internal-api.path:
+  :default: ''
+  :type: String
+glance.services.registry.network:
+  :default: public
+  :type: String
+glance.services.registry.port:
+  :default: 9191
+  :type: Fixnum
+  :stack_name: openstack.endpoints.image-registry.port
+  :stack_default: '9191'
+  :stack_type: String
+glance.services.registry.path:
+  :default: ''
+  :type: String
+  :stack_name: openstack.endpoints.image-registry.path
+  :stack_default: /v2
+  :stack_type: String
+glance.services.registry.cert_file:
+  :default: glance.pem
+  :type: String
+glance.services.registry.key_file:
+  :default: glance.key
+  :type: String
+glance.services.registry.chain_file:
+  :default: ''
+  :type: String
+glance.services.registry.wsgi_file:
+  :default: glance-registry
+  :type: String
+glance.db.name:
+  :default: glance
+  :type: String
+  :stack_name: openstack.db.image.db_name
+  :stack_default: glance
+  :stack_type: String
+glance.db.username:
+  :default: glance
+  :type: String
+  :stack_name: openstack.image.db.username
+  :stack_default: glance
+  :stack_type: String
+glance.service_tenant_name:
+  :default: service
+  :type: String
+  :stack_name: openstack.image.service_tenant_name
+  :stack_default: service
+  :stack_type: String
+glance.service_user:
+  :default: glance
+  :type: String
+  :stack_name: openstack.image.service_user
+  :stack_default: glance
+  :stack_type: String
+glance.service_role:
+  :default: admin
+  :type: String
+  :stack_name: openstack.image.service_role
+  :stack_default: admin
+  :stack_type: String
+glance.api.default_store:
+  :default: file
+  :type: String
+  :stack_name: openstack.image.api.default_store
+  :stack_default: file
+  :stack_type: String
+glance.api.swift.store_container:
+  :default: glance
+  :type: String
+  :stack_name: openstack.image.api.swift.container
+  :stack_default: glance
+  :stack_type: String
+glance.api.swift.store_large_object_size:
+  :default: '200'
+  :type: String
+  :stack_name: openstack.image.api.swift.large_object_size
+  :stack_default: '200'
+  :stack_type: String
+glance.api.swift.store_large_object_chunk_size:
+  :default: '200'
+  :type: String
+  :stack_name: openstack.image.api.swift.large_object_chunk_size
+  :stack_default: '200'
+  :stack_type: String
+glance.api.swift.enable_snet:
+  :default: 'False'
+  :type: String
+  :notes:
+  - cookbook-openstack-image/templates/default/glance-api.conf.erb:swift_enable_snet
+    = False
+glance.api.swift.store_region:
+  :default: 
+  :type: NilClass
+glance.api.rbd.rbd_store_ceph_conf:
+  :default: /etc/ceph/ceph.conf
+  :type: String
+  :stack_name: openstack.image.api.rbd.rbd_store_ceph_conf
+  :stack_default: /etc/ceph/ceph.conf
+  :stack_type: String
+glance.api.rbd.rbd_store_user:
+  :default: glance
+  :type: String
+  :stack_name: openstack.image.api.rbd.rbd_store_user
+  :stack_default: glance
+  :stack_type: String
+glance.api.rbd.rbd_store_pool:
+  :default: images
+  :type: String
+  :stack_name: openstack.image.api.rbd.rbd_store_pool
+  :stack_default: images
+  :stack_type: String
+glance.api.rbd.rbd_store_chunk_size:
+  :default: '8'
+  :type: String
+  :stack_name: glance.api.rbd.rbd_store_chunk_size
+  :stack_default: {}
+  :stack_type: Hash
+glance.api.rbd.rbd_store_pool_pg_num:
+  :default: '1000'
+  :type: String
+glance.api.cache.image_cache_max_size:
+  :default: '10737418240'
+  :type: String
+  :stack_name: openstack.image.api.cache.image_cache_max_size
+  :stack_default: '10737418240'
+  :stack_type: String
+glance.api.notifier_strategy:
+  :default: noop
+  :type: String
+  :stack_name: openstack.image.mq.notifier_strategy
+  :stack_default: noop
+  :stack_type: String
+glance.api.notification_topic:
+  :default: glance_notifications
+  :type: String
+  :notes:
+  - cookbook-openstack-image/templates/default/glance-api.conf.erb:rabbit_notification_topic
+    = glance_notifications
+  - cookbook-openstack-image/templates/default/glance-api.conf.erb:qpid_notification_topic
+    = glance_notifications
+glance.api.workers:
+  :default: 8
+  :type: Fixnum
+  :notes:
+  - cookbook-openstack-image/templates/default/glance-api.conf.erb:workers = <%= node["cpu"]["total"]
+    %>
+glance.api.show_image_direct_url:
+  :default: 'True'
+  :type: String
+glance.image_upload:
+  :default: false
+  :type: FalseClass
+  :notes:
+  - there is no toggle for this in stackforge; always uploads cirros by default
+glance.images:
+  :default: []
+  :type: Array
+  :stack_name: openstack.image.upload_images
+  :stack_default:
+  - cirros
+  :stack_type: Array
+glance.image.precise:
+  :default: http://cloud-images.ubuntu.com/precise/current/precise-server-cloudimg-amd64-disk1.img
+  :type: String
+  :stack_name: openstack.image.upload_image.precise
+  :stack_default: http://cloud-images.ubuntu.com/precise/current/precise-server-cloudimg-amd64-disk1.img
+  :stack_type: String
+glance.image.cirros:
+  :default: http://download.cirros-cloud.net/0.3.1/cirros-0.3.1-x86_64-disk.img
+  :type: String
+  :stack_name: openstack.image.upload_image.cirros
+  :stack_default: https://launchpadlibrarian.net/83305348/cirros-0.3.0-x86_64-disk.img
+  :stack_type: String
+! '':
+  :default: 
+  :type: ''
+glance.replicator.interval:
+  :default: 5
+  :type: Fixnum
+glance.replicator.checksum:
+  :default: 971b7cec95105747e77088e3e0853a636a120383
+  :type: String
+glance.replicator.rsync_user:
+  :default: glance
+  :type: String
+glance.replicator.enabled:
+  :default: true
+  :type: TrueClass
+glance.platform.supporting_packages:
+  :default:
+  - python-mysqldb
+  - python-keystone
+  - curl
+  - python-glanceclient
+  - python-warlock
+  :type: Array
+glance.platform.glance_packages:
+  :default:
+  - glance
+  - python-swift
+  - python-prettytable
+  - python-lockfile
+  :type: Array
+  :notes:
+  - openstack.image.platform.postgresql_python_packages => [ "python-psycopg2" ]
+  - openstack.image.platform.mysql_python_packages      => [ "MySQL-python" ]
+  - openstack.image.platform.image_packages             => [ "openstack-glance", "cronie"
+    "python-glanceclient"]
+  - openstack.image.platform.image_client_packages      => ["python-glanceclient"]
+  - openstack.image.platform.swift_packages             => [ "openstack-swift" ]
+glance.platform.glance_api_service:
+  :default: glance-api
+  :type: String
+  :stack_name: openstack.image.platform.image_api_service
+  :stack_default: glance-api
+  :stack_type: String
+glance.platform.glance_api_procmatch:
+  :default: ^((/usr/bin/)?python\d? )?(/usr/bin/)?glance-api\b
+  :type: String
+  :stack_name: openstack.image.platform.image_api_process_name
+  :stack_default: 
+  :stack_type: NilClass
+glance.platform.glance_registry_service:
+  :default: glance-registry
+  :type: String
+  :stack_name: openstack.image.platform.image_registry_service
+  :stack_default: glance-registry
+  :stack_type: String
+glance.platform.glance_registry_procmatch:
+  :default: ^((/usr/bin/)?python\d? )?(/usr/bin/)?glance-registry\b
+  :type: String
+glance.platform.package_options:
+  :default: -o Dpkg::Options::='--force-confold' -o Dpkg::Options::='--force-confdef'
+  :type: String
+  :stack_name: openstack.image.platform.package_overrides
+  :stack_default: -o Dpkg::Options::='--force-confold' -o Dpkg::Options::='--force-confdef'
+  :stack_type: String
+glance.ssl.dir:
+  :default: /etc/ssl
+  :type: String

@@ -1,0 +1,208 @@
+---
+horizon.horizon_user:
+  :default: horizon
+  :type: String
+horizon.rax_logo:
+  :default: true
+  :type: TrueClass
+horizon.db.username:
+  :default: dash
+  :type: String
+  :stack_name: openstack.dashboard.db.username
+  :stack_default: dash
+  :stack_type: String
+horizon.db.password:
+  :default: dash
+  :type: String
+  :notes:
+  - openstack.secret.db_passwords_data_bag = db_passwords
+horizon.db.name:
+  :default: dash
+  :type: String
+  :stack_name: openstack.db.dashboard.db_name
+  :stack_default: horizon
+  :stack_type: String
+horizon.use_ssl:
+  :default: true
+  :type: TrueClass
+  :stack_name: openstack.dashboard.use_ssl
+  :stack_default: true
+  :stack_type: TrueClass
+horizon.ssl.cert:
+  :default: horizon.pem
+  :type: String
+  :stack_name: openstack.dashboard.ssl.cert
+  :stack_default: horizon.pem
+  :stack_type: String
+horizon.ssl.key:
+  :default: horizon.key
+  :type: String
+  :stack_name: openstack.dashboard.ssl.key
+  :stack_default: horizon.key
+  :stack_type: String
+horizon.ssl.dir:
+  :default: /etc/ssl
+  :type: String
+  :stack_name: openstack.dashboard.ssl.dir
+  :stack_default: /etc/ssl
+  :stack_type: String
+horizon.services.dash.scheme:
+  :default: http
+  :type: String
+  :notes:
+  - Somehow there are no Horizon endpoints in StackForge?
+horizon.services.dash.network:
+  :default: public
+  :type: String
+  :notes:
+  - Somehow there are no Horizon endpoints in StackForge?
+horizon.services.dash.port:
+  :default: 80
+  :type: Fixnum
+  :notes:
+  - Somehow there are no Horizon endpoints in StackForge?
+horizon.services.dash.path:
+  :default: /
+  :type: String
+  :notes:
+  - Somehow there are no Horizon endpoints in StackForge?
+horizon.services.dash_ssl.scheme:
+  :default: https
+  :type: String
+  :notes:
+  - Somehow there are no Horizon endpoints in StackForge?
+horizon.services.dash_ssl.network:
+  :default: public
+  :type: String
+  :notes:
+  - Somehow there are no Horizon endpoints in StackForge?
+horizon.services.dash_ssl.port:
+  :default: 443
+  :type: Fixnum
+  :notes:
+  - Somehow there are no Horizon endpoints in StackForge?
+horizon.services.dash_ssl.path:
+  :default: /
+  :type: String
+  :notes:
+  - Somehow there are no Horizon endpoints in StackForge?
+horizon.neutron.enable_lb:
+  :default: 'False'
+  :type: String
+horizon.swift.enabled:
+  :default: 'False'
+  :type: String
+  :stack_name: openstack.dashboard.swift.enabled
+  :stack_default: 'False'
+  :stack_type: String
+horizon.theme:
+  :default: default
+  :type: String
+  :stack_name: openstack.dashboard.theme
+  :stack_default: default
+  :stack_type: String
+horizon.theme_image_update_style:
+  :default: false
+  :type: FalseClass
+horizon.theme_image_base:
+  :default: 
+  :type: NilClass
+horizon.theme_image_list:
+  :default: 
+  :type: NilClass
+horizon.theme_css_update_style:
+  :default: false
+  :type: FalseClass
+horizon.theme_css_base:
+  :default: 
+  :type: NilClass
+horizon.theme_css_list:
+  :default: 
+  :type: NilClass
+horizon.help_url:
+  :default: http://www.rackspace.com/knowledge_center/product-page/rackspace-private-cloud
+  :type: String
+  :stack_name: openstack.dashboard.help_url
+  :stack_default: http://docs.openstack.org
+  :stack_type: String
+horizon.password_autocomplete:
+  :default: 'on'
+  :type: String
+  :notes:
+  - cookbook-openstack-dashboard/templates/default/local_settings.py.erb:# HORIZON_CONFIG["password_autocomplete"]
+    = "off"
+horizon.allowed_hosts:
+  :default: 
+  :type: NilClass
+horizon.endpoint_type:
+  :default: internalURL
+  :type: String
+  :notes:
+  - cookbook-openstack-dashboard/templates/default/local_settings.py.erb:#OPENSTACK_ENDPOINT_TYPE
+    = "publicURL"
+horizon.endpoint_host:
+  :default: 
+  :type: NilClass
+horizon.endpoint_port:
+  :default: 
+  :type: NilClass
+horizon.endpoint_scheme:
+  :default: 
+  :type: NilClass
+horizon.secret_key:
+  :default: /etc/openstack-dashboard/secret_key
+  :type: String
+horizon.stylesheet_path:
+  :default: /usr/share/openstack-dashboard/openstack_dashboard/templates/_stylesheets.html
+  :type: String
+  :stack_name: openstack.dashboard.stylesheet_path
+  :stack_default: /usr/share/openstack-dashboard/openstack_dashboard/templates/_stylesheets.html
+  :stack_type: String
+horizon.dash_path:
+  :default: /usr/share/openstack-dashboard/openstack_dashboard
+  :type: String
+  :stack_name: openstack.dashboard.dash_path
+  :stack_default: /usr/share/openstack-dashboard/openstack_dashboard
+  :stack_type: String
+horizon.wsgi_path:
+  :default: node["horizon"]["dash_path"] + "/wsgi"
+  :type: String
+  :stack_name: openstack.dashboard.wsgi_path
+  :stack_default: node["openstack"]["dashboard"]["dash_path"] + "/wsgi/django.wsgi"
+  :stack_type: String
+horizon.local_settings_path:
+  :default: /etc/openstack-dashboard/local_settings.py
+  :type: String
+  :stack_name: openstack.dashboard.local_settings_path
+  :stack_default: /etc/openstack-dashboard/local_settings.py
+  :stack_type: String
+horizon.platform.supporting_packages:
+  :default:
+  - python-mysqldb
+  - python-cinderclient
+  - python-neutronclient
+  - python-keystoneclient
+  - python-glanceclient
+  - python-novaclient
+  :type: Array
+  :notes:
+  - openstack.dashboard.platform.mysql_python_packages = ["python-mysqldb"]
+  - openstack.dashboard.platform.postgresql_python_packages = ["python-psycopg2"]
+  - openstack.dashboard.platform.memcache_python_packages = ["python-memcache"]
+horizon.platform.horizon_packages:
+  :default:
+  - openstack-dashboard
+  - python-netaddr
+  - node-less
+  :type: Array
+  :stack_name: openstack.dashboard.platform.horizon_packages
+  :stack_default:
+  - lessc
+  - openstack-dashboard
+  :stack_type: Array
+horizon.platform.package_options:
+  :default: -o Dpkg::Options::='--force-confold' -o Dpkg::Options::='--force-confdef'
+  :type: String
+  :stack_name: openstack.dashboard.platform.package_overrides
+  :stack_default: -o Dpkg::Options::='--force-confold' -o Dpkg::Options::='--force-confdef'
+  :stack_type: String

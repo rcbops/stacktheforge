@@ -1,0 +1,395 @@
+---
+heat.db.name:
+  :default: heat
+  :type: String
+  :stack_name: openstack.db.orchestration.db_name
+  :stack_default: heat
+  :stack_type: String
+heat.db.username:
+  :default: heat
+  :type: String
+  :stack_name: openstack.db.orchestration.username
+  :stack_default:
+  :stack_type: String
+  :notes:
+  - No default attribute assignment in StackForge
+heat.service_tenant_name:
+  :default: service
+  :type: String
+  :stack_name: openstack.orchestration.service_tenant_name
+  :stack_default: service
+  :stack_type: String
+heat.service_user:
+  :default: heat
+  :type: String
+  :stack_name: openstack.orchestration.service_user
+  :stack_default: heat
+  :stack_type: String
+heat.service_role:
+  :default: admin
+  :type: String
+  :stack_name: openstack.orchestration.service_role
+  :stack_default: admin
+  :stack_type: String
+heat.ssl.enabled:
+  :default: false
+  :type: FalseClass
+heat.ssl.ca_file:
+  :default: 
+  :type: NilClass
+heat.ssl.cert_file:
+  :default: heat.pem
+  :type: String
+heat.ssl.key_file:
+  :default: heat.key
+  :type: String
+heat.ssl.dir:
+  :default: /etc/heat/certs
+  :type: String
+heat.notification.driver:
+  :default: no_op
+  :type: String
+  :notes:
+  - has commented default (ie., not tunable)
+heat.notification.topics:
+  :default: notifications
+  :type: String
+  :notes:
+  - has commented default (ie., not tunable)
+heat.policy_file:
+  :default: policy.json
+  :type: String
+  :notes:
+  - has commented default (ie., not tunable)
+heat.policy_default_rule:
+  :default: default
+  :type: String
+  :notes:
+  - has commented default (ie., not tunable)
+heat.heartbeat.freq:
+  :default: 300
+  :type: Fixnum
+  :notes:
+  - has commented default (ie., not tunable)
+heat.heartbeat.ttl:
+  :default: 600
+  :type: Fixnum
+  :notes:
+  - has commented default (ie., not tunable)
+heat.sql.backend:
+  :default: sqlalchemy
+  :type: String
+  :notes:
+  - has commented default (ie., not tunable)
+heat.sql.max_retries:
+  :default: 10
+  :type: Fixnum
+  :notes:
+  - has commented default (ie., not tunable)
+heat.sql.retry_interval:
+  :default: 10
+  :type: Fixnum
+  :notes:
+  - has commented default (ie., not tunable)
+heat.sql.slave.enabled:
+  :default: false
+  :type: FalseClass
+  :notes:
+  - has commented default (ie., not tunable)
+heat.sql.slave.salve_user:
+  :default: 
+  :type: NilClass
+  :notes:
+  - has commented default (ie., not tunable)
+heat.sql.slave.salve_password:
+  :default: 
+  :type: NilClass
+  :notes:
+  - has commented default (ie., not tunable)
+heat.sql.slave.salve_host:
+  :default: 
+  :type: NilClass
+  :notes:
+  - has commented default (ie., not tunable)
+heat.sql.slave.salve_db:
+  :default: mysql
+  :type: String
+  :notes:
+  - has commented default (ie., not tunable)
+heat.template_size:
+  :default: 20480
+  :type: Fixnum
+  :notes:
+  - has commented default (ie., not tunable)
+heat.services.engine.name:
+  :default: heat
+  :type: String
+  :notes:
+  - has commented default (ie., not tunable)
+heat.services.cloudwatch_api.enabled:
+  :default: true
+  :type: TrueClass
+heat.services.cloudwatch_api.network:
+  :default: public
+  :type: String
+heat.services.cloudwatch_api.scheme:
+  :default: http
+  :type: String
+  :stack_name: openstack.endpoints.orchestration-api-cloudwatch.scheme
+  :stack_default: http
+  :stack_type: String
+heat.services.cloudwatch_api.port:
+  :default: 8003
+  :type: Fixnum
+  :stack_name: openstack.endpoints.orchestration-api-cloudwatch.port
+  :stack_default: '8003'
+  :stack_type: String
+heat.services.cloudwatch_api.path:
+  :default: ''
+  :type: String
+  :stack_name: openstack.endpoints.orchestration-api-cloudwatch.path
+  :stack_default: /v1
+  :stack_type: String
+heat.services.cloudwatch_api.backlog:
+  :default: 4096
+  :type: Fixnum
+heat.services.cloudwatch_api.cert:
+  :default: heat.pem
+  :type: String
+heat.services.cloudwatch_api.key:
+  :default: heat.key
+  :type: String
+heat.services.cloudwatch_api.workers:
+  :default: 10
+  :type: Fixnum
+heat.services.cfn_api.enabled:
+  :default: true
+  :type: TrueClass
+heat.services.cfn_api.network:
+  :default: public
+  :type: String
+heat.services.cfn_api.scheme:
+  :default: http
+  :type: String
+  :stack_name: openstack.endpoints.orchestration-api-cfn.scheme
+  :stack_default: http
+  :stack_type: String
+heat.services.cfn_api.port:
+  :default: 8000
+  :type: Fixnum
+  :stack_name: openstack.endpoints.orchestration-api-cfn.port
+  :stack_default: '8000'
+  :stack_type: String
+heat.services.cfn_api.path:
+  :default: /v1/$(tenant_id)s
+  :type: String
+  :stack_name: openstack.endpoints.orchestration-api-cfn.path
+  :stack_default: /v1
+  :stack_type: String
+heat.services.cfn_api.backlog:
+  :default: 4096
+  :type: Fixnum
+heat.services.cfn_api.cert:
+  :default: heat.pem
+  :type: String
+heat.services.cfn_api.key:
+  :default: heat.key
+  :type: String
+heat.services.cfn_api.workers:
+  :default: 10
+  :type: Fixnum
+heat.services.cfn_internal_api.scheme:
+  :default: http
+  :type: String
+heat.services.cfn_internal_api.network:
+  :default: management
+  :type: String
+heat.services.cfn_internal_api.port:
+  :default: 8000
+  :type: Fixnum
+heat.services.cfn_internal_api.path:
+  :default: /v1/$(tenant_id)s
+  :type: String
+heat.services.cfn_admin_api.scheme:
+  :default: http
+  :type: String
+heat.services.cfn_admin_api.network:
+  :default: management
+  :type: String
+heat.services.cfn_admin_api.port:
+  :default: 8000
+  :type: Fixnum
+heat.services.cfn_admin_api.path:
+  :default: /v1/$(tenant_id)s
+  :type: String
+heat.services.base_api.enabled:
+  :default: true
+  :type: TrueClass
+heat.services.base_api.scheme:
+  :default: http
+  :type: String
+heat.services.base_api.network:
+  :default: public
+  :type: String
+heat.services.base_api.port:
+  :default: 8004
+  :type: Fixnum
+heat.services.base_api.path:
+  :default: /v1/$(tenant_id)s
+  :type: String
+heat.services.base_api.backlog:
+  :default: 4096
+  :type: Fixnum
+heat.services.base_api.cert:
+  :default: heat.pem
+  :type: String
+heat.services.base_api.key:
+  :default: heat.key
+  :type: String
+heat.services.base_api.workers:
+  :default: 10
+  :type: Fixnum
+heat.services.base_internal_api.scheme:
+  :default: http
+  :type: String
+heat.services.base_internal_api.network:
+  :default: management
+  :type: String
+heat.services.base_internal_api.port:
+  :default: 8004
+  :type: Fixnum
+heat.services.base_internal_api.path:
+  :default: /v1/$(tenant_id)s
+  :type: String
+heat.services.base_admin_api.scheme:
+  :default: http
+  :type: String
+heat.services.base_admin_api.network:
+  :default: management
+  :type: String
+heat.services.base_admin_api.port:
+  :default: 8004
+  :type: Fixnum
+heat.services.base_admin_api.path:
+  :default: /v1/$(tenant_id)s
+  :type: String
+heat.auth_encryption_key:
+  :default: AnyStringWillDoJustFine
+  :type: String
+heat.syslog.use:
+  :default: false
+  :type: FalseClass
+  :stack_name: openstack.orchestration.syslog.use
+  :stack_default: false
+  :stack_type: FalseClass
+heat.syslog.facility:
+  :default: LOG_LOCAL3
+  :type: String
+  :stack_name: openstack.orchestration.syslog.facility
+  :stack_default: LOG_LOCAL2
+  :stack_type: String
+heat.logging.verbose:
+  :default: 'true'
+  :type: String
+  :stack_name: openstack.orchestration.verbose
+  :stack_default: 'False'
+  :stack_type: String
+heat.logging.debug:
+  :default: 'false'
+  :type: String
+  :stack_name: openstack.orchestration.debug
+  :stack_default: 'False'
+  :stack_type: String
+heat.platform.supporting_packages:
+  :default:
+  - heat-common
+  - python-heat
+  - python-mysqldb
+  - python-heatclient
+  :type: Array
+  :notes:
+  - openstack.orchestration.platform.mysql_python_packages
+  - openstack.orchestration.platform.heat_common_packages
+  - openstack.orchestration.platform.heat_api_packages
+heat.platform.api_package_list:
+  :default:
+  - heat-api
+  :type: Array
+  :stack_name: openstack.orchestration.platform.heat_api_packages
+  :stack_default:
+  - heat-api
+  - python-heatclient
+  :stack_type: Array
+heat.platform.api_service:
+  :default: heat-api
+  :type: String
+  :stack_name: openstack.orchestration.platform.heat_api_service
+  :stack_default: heat-api
+  :stack_type: String
+heat.platform.api_procmatch:
+  :default: ^((/usr/bin/)?python\d? )?(/usr/bin/)?heat-api\b
+  :type: String
+heat.platform.cfn_api_package_list:
+  :default:
+  - heat-api-cfn
+  :type: Array
+  :stack_name: openstack.orchestration.platform.heat_api_cfn_packages
+  :stack_default:
+  - heat-api-cfn
+  - python-heatclient
+  :stack_type: Array
+heat.platform.cfn_api_service:
+  :default: heat-api-cfn
+  :type: String
+  :stack_name: openstack.orchestration.platform.heat_api_cfn_service
+  :stack_default: heat-api-cfn
+  :stack_type: String
+heat.platform.cfn_api_procmatch:
+  :default: ^((/usr/bin/)?python\d? )?(/usr/bin/)?heat-api-cfn\b
+  :type: String
+heat.platform.cloudwatch_api_package_list:
+  :default:
+  - heat-api-cloudwatch
+  :type: Array
+  :stack_name: openstack.orchestration.platform.heat_api_cloudwatch_packages
+  :stack_default:
+  - heat-api-cloudwatch
+  - python-heatclient
+  :stack_type: Array
+heat.platform.cloudwatch_api_service:
+  :default: heat-api-cloudwatch
+  :type: String
+  :stack_name: openstack.orchestration.platform.heat_api_cloudwatch_service
+  :stack_default: heat-api-cloudwatch
+  :stack_type: String
+heat.platform.cloudwatch_api_procmatch:
+  :default: ^((/usr/bin/)?python\d? )?(/usr/bin/)?heat-api-cloudwatch\b
+  :type: String
+heat.platform.heat_engine_package_list:
+  :default:
+  - heat-engine
+  :type: Array
+  :stack_name: openstack.orchestration.platform.heat_engine_packages
+  :stack_default:
+  - heat-engine
+  :stack_type: Array
+heat.platform.heat_engine_service:
+  :default: heat-engine
+  :type: String
+  :stack_name: openstack.orchestration.platform.heat_engine_service
+  :stack_default: heat-engine
+  :stack_type: String
+heat.platform.heat_engine_procmatch:
+  :default: ^((/usr/bin/)?python\d? )?(/usr/bin/)?heat-engine\b
+  :type: String
+heat.platform.service_bin:
+  :default: /usr/sbin/service
+  :type: String
+heat.platform.package_overrides:
+  :default: -o Dpkg::Options:='--force-confold' -o Dpkg::Options:='--force-confdef'
+  :type: String
+  :stack_name: openstack.orchestration.platform.package_overrides
+  :stack_default: -o Dpkg::Options::='--force-confold' -o Dpkg::Options::='--force-confdef'
+  :stack_type: String
+  :notes:
+  - single colons in RPC options

@@ -1,0 +1,239 @@
+---
+swift.audit_hour:
+  :default: '5'
+  :type: String
+  :stack_name: swift.audit_hour
+  :stack_default: '5'
+  :stack_type: String
+swift.service_tenant_name:
+  :default: service
+  :type: String
+swift.service_user:
+  :default: swift
+  :type: String
+swift.service_pass:
+  :default: 
+  :type: NilClass
+swift.service_role:
+  :default: admin
+  :type: String
+swift.package_action:
+  :default: install
+  :type: String
+  :notes:
+  - In StackForge, package loops have :upgrade or :install hardcoded
+swift.uid:
+  :default: 
+  :type: NilClass
+swift.memcache_role:
+  :default: swift-lite-proxy
+  :type: String
+swift.dsh.user.name:
+  :default: swiftops
+  :type: String
+swift.dsh.admin_user.name:
+  :default: swiftops
+  :type: String
+swift.dsh.network:
+  :default: swift-management
+  :type: String
+swift.tags.management-server:
+  :default: swift-management-server
+  :type: String
+swift.tags.proxy-server:
+  :default: swift-proxy-server
+  :type: String
+swift.tags.account-server:
+  :default: swift-account-server
+  :type: String
+swift.tags.container-server:
+  :default: swift-countainer-server
+  :type: String
+swift.tags.object-server:
+  :default: swift-object-server
+  :type: String
+swift.ntp.servers:
+  :default: []
+  :type: Array
+swift.ntp.network:
+  :default: swift-management
+  :type: String
+swift.proxy.config.DEFAULT.workers:
+  :default: '[node["cpu"]["total"] - 1, 1].max'
+  :type: String
+  :notes:
+  - 'Not parameterized, but same value in ERB template:'
+  - templates/default/proxy-server.conf.erb:workers = <%= [ node[:cpu][:total] - 1,
+    1 ].max %>
+  - Actual data type is Array
+swift.account.config.DEFAULT.workers:
+  :default: 6
+  :type: Fixnum
+  :notes:
+  - 'hardcoded value ''10'' in template:'
+  - templates/default/account-server.conf.erb:workers = 10
+swift.container.config.DEFAULT.workers:
+  :default: 6
+  :type: Fixnum
+  :notes:
+  - 'hardcoded value ''10'' in template:'
+  - templates/default/container-server.conf.erb:workers = 10
+swift.object.config.DEFAULT.workers:
+  :default: 8
+  :type: Fixnum
+  :notes:
+  - 'hardcoded value ''10'' in template:'
+  - templates/default/object-server.conf.erb:workers = 10
+swift.region:
+  :default: RegionOne
+  :type: String
+swift.keystone_endpoint:
+  :default: http://127.0.0.1/
+  :type: String
+swift.services.ring-repo.network:
+  :default: swift-storage
+  :type: String
+swift.services.proxy.network:
+  :default: swift-proxy
+  :type: String
+swift.services.proxy.scheme:
+  :default: http
+  :type: String
+  :stack_name: openstack.endpoints.object-storage-api.scheme
+  :stack_default: http
+  :stack_type: String
+swift.services.proxy.port:
+  :default: 8080
+  :type: Fixnum
+  :stack_name: openstack.endpoints.object-storage-api.port
+  :stack_default: '8080'
+  :stack_type: String
+swift.services.proxy.path:
+  :default: /v1/AUTH_%(tenant_id)s
+  :type: String
+  :stack_name: openstack.endpoints.object-storage-api.path
+  :stack_default: /v1/
+  :stack_type: String
+swift.services.object-server.network:
+  :default: swift-storage
+  :type: String
+swift.services.object-server.port:
+  :default: 6000
+  :type: Fixnum
+  :notes:
+  - possibly orphaned attribute in RPC
+  - 'recipes/object-server.rb:    "bind_port" => 6000,'
+swift.services.container-server.network:
+  :default: swift-storage
+  :type: String
+swift.services.container-server.port:
+  :default: 6001
+  :type: Fixnum
+  :notes:
+  - possibly orphaned attribute in RPC
+  - 'recipes/container-server.rb:    "bind_port" => 6001,'
+swift.services.account-server.network:
+  :default: swift-storage
+  :type: String
+swift.services.account-server.port:
+  :default: 6002
+  :type: Fixnum
+  :notes:
+  - possibly orphaned attribute in RPC
+  - 'recipes/account-server.rb:    "bind_port" => 6002,'
+swift.platform.disk_format:
+  :default: xfs
+  :type: String
+  :stack_name: swift.platform.disk_format
+  :stack_default: xfs
+  :stack_type: String
+swift.platform.proxy_packages:
+  :default:
+  - swift-proxy
+  - python-memcache
+  :type: Array
+  :stack_name: swift.platform.proxy_packages
+  :stack_default:
+  - swift-proxy
+  - python-memcache
+  :stack_type: Array
+swift.platform.object_packages:
+  :default:
+  - swift-object
+  :type: Array
+  :stack_name: swift.platform.object_packages
+  :stack_default:
+  - swift-object
+  :stack_type: Array
+swift.platform.container_packages:
+  :default:
+  - swift-container
+  :type: Array
+  :stack_name: swift.platform.container_packages
+  :stack_default:
+  - swift-container
+  :stack_type: Array
+swift.platform.account_packages:
+  :default:
+  - swift-account
+  - python-swiftclient
+  :type: Array
+  :stack_name: swift.platform.account_packages
+  :stack_default:
+  - swift-account
+  - python-swiftclient
+  :stack_type: Array
+swift.platform.swift_packages:
+  :default:
+  - swift
+  :type: Array
+  :stack_name: swift.platform.swift_packages
+  :stack_default:
+  - swift
+  :stack_type: Array
+swift.platform.rsync_packages:
+  :default:
+  - rsync
+  :type: Array
+  :stack_name: swift.platform.rsync_packages
+  :stack_default:
+  - rsync
+  :stack_type: Array
+swift.platform.service_prefix:
+  :default: ''
+  :type: String
+  :stack_name: swift.platform.service_prefix
+  :stack_default: ''
+  :stack_type: String
+swift.platform.service_suffix:
+  :default: ''
+  :type: String
+  :stack_name: swift.platform.service_suffix
+  :stack_default: ''
+  :stack_type: String
+swift.platform.git_dir:
+  :default: /var/cache/git
+  :type: String
+  :stack_name: swift.platform.git_dir
+  :stack_default: /var/cache/git
+  :stack_type: String
+swift.platform.git_service:
+  :default: git-daemon
+  :type: String
+  :stack_name: swift.platform.git_service
+  :stack_default: git-daemon
+  :stack_type: String
+swift.platform.service_provider:
+  :default: Chef::Provider::Service::Upstart
+  :type: String
+  :stack_name: swift.platform.service_provider
+  :stack_default: Chef::Provider::Service::Upstart
+  :stack_type: String
+swift.platform.override_options:
+  :default: -o Dpkg::Options::='--force-confold' -o Dpkg::Options::='--force-confdef'
+  :type: String
+  :stack_name: swift.platform.override_options
+  :stack_default: -o Dpkg::Options:='--force-confold' -o Dpkg::Option:='--force-confdef'
+  :stack_type: String
+  :notes:
+  - StackForge options have single colons

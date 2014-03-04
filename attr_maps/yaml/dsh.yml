@@ -1,0 +1,11 @@
+---
+dsh.host_key:
+  :default: ''
+  :type: String
+dsh.hosts:
+  :default: []
+  :type: Array
+pssh.platform.pssh_packages:
+  :default:
+  - pssh
+  :type: Array

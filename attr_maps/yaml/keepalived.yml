@@ -1,0 +1,47 @@
+---
+keepalived.shared_address:
+  :default: false
+  :type: FalseClass
+keepalived.global.notification_emails:
+  :default: 
+  :type: NilClass
+keepalived.global.notification_email_from:
+  :default: '"keepalived@#{node["domain"] || "example.com"}"'
+  :type: String
+keepalived.global.smtp_server:
+  :default: 127.0.0.1
+  :type: String
+keepalived.global.smtp_connect_timeout:
+  :default: 30
+  :type: Fixnum
+keepalived.global.router_id:
+  :default: node["fqdn"]
+  :type: String
+keepalived.instance_defaults.state:
+  :default: MASTER
+  :type: String
+keepalived.instance_defaults.priority:
+  :default: 100
+  :type: Fixnum
+keepalived.instance_defaults.virtual_router_id:
+  :default: 10
+  :type: Fixnum
+keepalived.vs_defaults.lb_algo:
+  :default: rr
+  :type: String
+keepalived.vs_defaults.lb_kind:
+  :default: nat
+  :type: String
+keepalived.vs_defaults.delay_loop:
+  :default: 15
+  :type: Fixnum
+keepalived.vs_defaults.protocol:
+  :default: tcp
+  :type: String
+keepalived.platform.required_packages:
+  :default:
+  - iptables
+  :type: Array
+keepalived.service_bin:
+  :default: /usr/sbin/service
+  :type: String

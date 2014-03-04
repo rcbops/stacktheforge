@@ -1,0 +1,274 @@
+---
+syslog.queue_offline_messages:
+  :default: true
+  :type: TrueClass
+openstack-logging.settings.glance-api.monitor_logfile:
+  :default: /var/log/glance/api.log
+  :type: String
+openstack-logging.settings.glance-api.injection_tag:
+  :default: 'glance-api_log:'
+  :type: String
+openstack-logging.settings.glance-api.monitor_state_file:
+  :default: glance-api_log
+  :type: String
+openstack-logging.settings.glance-api.injection_severity:
+  :default: info
+  :type: String
+openstack-logging.settings.glance-api.injection_facility:
+  :default: local6
+  :type: String
+openstack-logging.settings.glance-registry.monitor_logfile:
+  :default: /var/log/glance/registry.log
+  :type: String
+openstack-logging.settings.glance-registry.injection_tag:
+  :default: 'glance-registry_log:'
+  :type: String
+openstack-logging.settings.glance-registry.monitor_state_file:
+  :default: glance-registry_log
+  :type: String
+openstack-logging.settings.glance-registry.injection_severity:
+  :default: info
+  :type: String
+openstack-logging.settings.glance-registry.injection_facility:
+  :default: local6
+  :type: String
+openstack-logging.settings.glance-scrubber.monitor_logfile:
+  :default: /var/log/glance/scrubber.log
+  :type: String
+openstack-logging.settings.glance-scrubber.injection_tag:
+  :default: 'glance-scrubber:'
+  :type: String
+openstack-logging.settings.glance-scrubber.monitor_state_file:
+  :default: glance-scrubber_log
+  :type: String
+openstack-logging.settings.glance-scrubber.injection_severity:
+  :default: info
+  :type: String
+openstack-logging.settings.glance-scrubber.injection_facility:
+  :default: local6
+  :type: String
+openstack-logging.settings.glance-cache.monitor_logfile:
+  :default: /var/log/glance/image-cache.log
+  :type: String
+openstack-logging.settings.glance-cache.injection_tag:
+  :default: 'glance-cache:'
+  :type: String
+openstack-logging.settings.glance-cache.monitor_state_file:
+  :default: glance-cache_log
+  :type: String
+openstack-logging.settings.glance-cache.injection_severity:
+  :default: info
+  :type: String
+openstack-logging.settings.glance-cache.injection_facility:
+  :default: local6
+  :type: String
+openstack-logging.settings.keystone.monitor_logfile:
+  :default: /var/log/keystone/keystone.log
+  :type: String
+openstack-logging.settings.keystone.injection_tag:
+  :default: 'keystone_log:'
+  :type: String
+openstack-logging.settings.keystone.monitor_state_file:
+  :default: keystone_log
+  :type: String
+openstack-logging.settings.keystone.injection_severity:
+  :default: info
+  :type: String
+openstack-logging.settings.keystone.injection_facility:
+  :default: local6
+  :type: String
+openstack-logging.settings.nova-api-ec2.monitor_logfile:
+  :default: /var/log/nova/nova-api-ec2.log
+  :type: String
+openstack-logging.settings.nova-api-ec2.injection_tag:
+  :default: 'nova-api-ec2_log:'
+  :type: String
+openstack-logging.settings.nova-api-ec2.monitor_state_file:
+  :default: nova-api-ec2_log
+  :type: String
+openstack-logging.settings.nova-api-ec2.injection_severity:
+  :default: info
+  :type: String
+openstack-logging.settings.nova-api-ec2.injection_facility:
+  :default: local6
+  :type: String
+openstack-logging.settings.nova-api-os-compute.monitor_logfile:
+  :default: /var/log/nova/nova-api-os-compute.log
+  :type: String
+openstack-logging.settings.nova-api-os-compute.injection_tag:
+  :default: 'nova-api-os-compute_log:'
+  :type: String
+openstack-logging.settings.nova-api-os-compute.monitor_state_file:
+  :default: nova-api-os-compute_log
+  :type: String
+openstack-logging.settings.nova-api-os-compute.injection_severity:
+  :default: info
+  :type: String
+openstack-logging.settings.nova-api-os-compute.injection_facility:
+  :default: local6
+  :type: String
+openstack-logging.settings.nova-compute.monitor_logfile:
+  :default: /var/log/nova/nova-compute.log
+  :type: String
+openstack-logging.settings.nova-compute.injection_tag:
+  :default: 'nova-compute_log:'
+  :type: String
+openstack-logging.settings.nova-compute.monitor_state_file:
+  :default: nova-compute_log
+  :type: String
+openstack-logging.settings.nova-compute.injection_severity:
+  :default: info
+  :type: String
+openstack-logging.settings.nova-compute.injection_facility:
+  :default: local6
+  :type: String
+openstack-logging.settings.nova-api-metadata.monitor_logfile:
+  :default: /var/log/nova/nova-api-metadata.log
+  :type: String
+openstack-logging.settings.nova-api-metadata.injection_tag:
+  :default: 'nova-api-metadata_log:'
+  :type: String
+openstack-logging.settings.nova-api-metadata.monitor_state_file:
+  :default: nova-api-metadata_log
+  :type: String
+openstack-logging.settings.nova-api-metadata.injection_severity:
+  :default: info
+  :type: String
+openstack-logging.settings.nova-api-metadata.injection_facility:
+  :default: local6
+  :type: String
+openstack-logging.settings.nova-cert.monitor_logfile:
+  :default: /var/log/nova/nova-cert.log
+  :type: String
+openstack-logging.settings.nova-cert.injection_tag:
+  :default: 'nova-cert_log:'
+  :type: String
+openstack-logging.settings.nova-cert.monitor_state_file:
+  :default: nova-cert_log
+  :type: String
+openstack-logging.settings.nova-cert.injection_severity:
+  :default: info
+  :type: String
+openstack-logging.settings.nova-cert.injection_facility:
+  :default: local6
+  :type: String
+openstack-logging.settings.nova-conductor.monitor_logfile:
+  :default: /var/log/nova/nova-conductor.log
+  :type: String
+openstack-logging.settings.nova-conductor.injection_tag:
+  :default: 'nova-conductor_log:'
+  :type: String
+openstack-logging.settings.nova-conductor.monitor_state_file:
+  :default: nova-conductor_log
+  :type: String
+openstack-logging.settings.nova-conductor.injection_severity:
+  :default: info
+  :type: String
+openstack-logging.settings.nova-conductor.injection_facility:
+  :default: local6
+  :type: String
+openstack-logging.settings.nova-consoleauth.monitor_logfile:
+  :default: /var/log/nova/nova-consoleauth.log
+  :type: String
+openstack-logging.settings.nova-consoleauth.injection_tag:
+  :default: 'nova-consoleauth_log:'
+  :type: String
+openstack-logging.settings.nova-consoleauth.monitor_state_file:
+  :default: nova-consoleauth_log
+  :type: String
+openstack-logging.settings.nova-consoleauth.injection_severity:
+  :default: info
+  :type: String
+openstack-logging.settings.nova-consoleauth.injection_facility:
+  :default: local6
+  :type: String
+openstack-logging.settings.nova-manage.monitor_logfile:
+  :default: /var/log/nova/nova-manage.log
+  :type: String
+openstack-logging.settings.nova-manage.injection_tag:
+  :default: 'nova-manage_log:'
+  :type: String
+openstack-logging.settings.nova-manage.monitor_state_file:
+  :default: nova-manage_log
+  :type: String
+openstack-logging.settings.nova-manage.injection_severity:
+  :default: info
+  :type: String
+openstack-logging.settings.nova-manage.injection_facility:
+  :default: local6
+  :type: String
+openstack-logging.settings.nova-scheduler.monitor_logfile:
+  :default: /var/log/nova/nova-scheduler.log
+  :type: String
+openstack-logging.settings.nova-scheduler.injection_tag:
+  :default: 'nova-scheduler_log:'
+  :type: String
+openstack-logging.settings.nova-scheduler.monitor_state_file:
+  :default: nova-scheduler_log
+  :type: String
+openstack-logging.settings.nova-scheduler.injection_severity:
+  :default: info
+  :type: String
+openstack-logging.settings.nova-scheduler.injection_facility:
+  :default: local6
+  :type: String
+openstack-logging.settings.nova-network.monitor_logfile:
+  :default: /var/log/nova/nova-network.log
+  :type: String
+openstack-logging.settings.nova-network.injection_tag:
+  :default: 'nova-network_log:'
+  :type: String
+openstack-logging.settings.nova-network.monitor_state_file:
+  :default: nova-network_log
+  :type: String
+openstack-logging.settings.nova-network.injection_severity:
+  :default: info
+  :type: String
+openstack-logging.settings.nova-network.injection_facility:
+  :default: local6
+  :type: String
+openstack-logging.settings.cinder-api.monitor_logfile:
+  :default: /var/log/cinder/cinder-api.log
+  :type: String
+openstack-logging.settings.cinder-api.injection_tag:
+  :default: 'cinder-api_log:'
+  :type: String
+openstack-logging.settings.cinder-api.monitor_state_file:
+  :default: cinder-api_log
+  :type: String
+openstack-logging.settings.cinder-api.injection_severity:
+  :default: info
+  :type: String
+openstack-logging.settings.cinder-api.injection_facility:
+  :default: local6
+  :type: String
+openstack-logging.settings.cinder-scheduler.monitor_logfile:
+  :default: /var/log/cinder/cinder-scheduler.log
+  :type: String
+openstack-logging.settings.cinder-scheduler.injection_tag:
+  :default: 'cinder-scheduler_log:'
+  :type: String
+openstack-logging.settings.cinder-scheduler.monitor_state_file:
+  :default: cinder-scheduler_log
+  :type: String
+openstack-logging.settings.cinder-scheduler.injection_severity:
+  :default: info
+  :type: String
+openstack-logging.settings.cinder-scheduler.injection_facility:
+  :default: local6
+  :type: String
+openstack-logging.settings.cinder-volume.monitor_logfile:
+  :default: /var/log/cinder/cinder-volume.log
+  :type: String
+openstack-logging.settings.cinder-volume.injection_tag:
+  :default: 'cinder-volume_log:'
+  :type: String
+openstack-logging.settings.cinder-volume.monitor_state_file:
+  :default: cinder-volume_log
+  :type: String
+openstack-logging.settings.cinder-volume.injection_severity:
+  :default: info
+  :type: String
+openstack-logging.settings.cinder-volume.injection_facility:
+  :default: local6
+  :type: String

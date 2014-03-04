@@ -1,0 +1,742 @@
+---
+credentials.EC2.admin.access:
+  :default: ''
+  :type: String
+  :stack_name: credentials.EC2.admin.access
+  :stack_default: ''
+  :stack_type: String
+credentials.EC2.admin.secret:
+  :default: ''
+  :type: String
+  :stack_name: credentials.EC2.admin.secret
+  :stack_default: ''
+  :stack_type: String
+keystone.db.name:
+  :default: keystone
+  :type: String
+  :stack_name: openstack.db.identity.db_name
+  :stack_default: keystone
+  :stack_type: String
+keystone.db.username:
+  :default: keystone
+  :type: String
+  :stack_name: openstack.identity.db.username
+  :stack_default: keystone
+  :stack_type: String
+keystone.notification.driver:
+  :default: no_op
+  :type: String
+keystone.notification.topics:
+  :default: notifications
+  :type: String
+keystone.verbose:
+  :default: 'False'
+  :type: String
+  :stack_name: openstack.identity.verbose
+  :stack_default: 'False'
+  :stack_type: String
+keystone.debug:
+  :default: 'False'
+  :type: String
+  :stack_name: openstack.identity.debug
+  :stack_default: 'False'
+  :stack_type: String
+keystone.auth_type:
+  :default: sql
+  :type: String
+  :stack_name: openstack.identity.identity.backend
+  :stack_default: sql
+  :stack_type: String
+keystone.member_role_id:
+  :default: 9fe2ff9ee4384b1894a90878d3e92bab
+  :type: String
+keystone.setup_role:
+  :default: keystone-setup
+  :type: String
+keystone.mysql_role:
+  :default: mysql-master
+  :type: String
+keystone.api_role:
+  :default: keystone-api
+  :type: String
+keystone.token_expiration:
+  :default: 86400
+  :type: Fixnum
+  :notes:
+  - cookbook-openstack-identity/templates/default/keystone.conf.erb:expiration = 86400
+keystone.ldap.url:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.url
+  :stack_default: ldap://localhost
+  :stack_type: String
+keystone.ldap.user:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.user
+  :stack_default: dc=Manager,dc=example,dc=com
+  :stack_type: String
+keystone.ldap.password:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.password
+  :stack_default: 
+  :stack_type: NilClass
+keystone.ldap.suffix:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.suffix
+  :stack_default: cn=example,cn=com
+  :stack_type: String
+keystone.ldap.use_dumb_member:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.use_dumb_member
+  :stack_default: false
+  :stack_type: FalseClass
+keystone.ldap.dumb_member:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.dumb_member
+  :stack_default: cn=dumb,dc=example,dc=com
+  :stack_type: String
+keystone.ldap.allow_subtree_delete:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.allow_subtree_delete
+  :stack_default: false
+  :stack_type: FalseClass
+keystone.ldap.query_scope:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.query_scope
+  :stack_default: one
+  :stack_type: String
+keystone.ldap.page_size:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.page_size
+  :stack_default: 0
+  :stack_type: Fixnum
+keystone.ldap.alias_dereferencing:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.alias_dereferencing
+  :stack_default: default
+  :stack_type: String
+keystone.ldap.user_tree_dn:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.user_tree_dn
+  :stack_default: 
+  :stack_type: NilClass
+keystone.ldap.user_filter:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.user_filter
+  :stack_default: 
+  :stack_type: NilClass
+keystone.ldap.user_objectclass:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.user_objectclass
+  :stack_default: inetOrgPerson
+  :stack_type: String
+keystone.ldap.user_id_attribute:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.user_id_attribute
+  :stack_default: cn
+  :stack_type: String
+keystone.ldap.user_name_attribute:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.user_name_attribute
+  :stack_default: sn
+  :stack_type: String
+keystone.ldap.user_mail_attribute:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.user_mail_attribute
+  :stack_default: email
+  :stack_type: String
+keystone.ldap.user_pass_attribute:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.user_pass_attribute
+  :stack_default: userPassword
+  :stack_type: String
+keystone.ldap.user_enabled_attribute:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.user_enabled_attribute
+  :stack_default: enabled
+  :stack_type: String
+keystone.ldap.user_domain_id_attribute:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.user_domain_id_attribute
+  :stack_default: businessCategory
+  :stack_type: String
+keystone.ldap.user_enabled_mask:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.user_enabled_mask
+  :stack_default: 0
+  :stack_type: Fixnum
+keystone.ldap.user_enabled_default:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.user_enabled_default
+  :stack_default: 'true'
+  :stack_type: String
+keystone.ldap.user_attribute_ignore:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.user_attribute_ignore
+  :stack_default: tenant_id,tenants
+  :stack_type: String
+keystone.ldap.user_allow_create:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.user_allow_create
+  :stack_default: true
+  :stack_type: TrueClass
+keystone.ldap.user_allow_update:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.user_allow_update
+  :stack_default: true
+  :stack_type: TrueClass
+keystone.ldap.user_allow_delete:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.user_allow_delete
+  :stack_default: true
+  :stack_type: TrueClass
+keystone.ldap.user_enabled_emulation:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.user_enabled_emulation
+  :stack_default: false
+  :stack_type: FalseClass
+keystone.ldap.user_enabled_emulation_dn:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.user_enabled_emulation_dn
+  :stack_default: 
+  :stack_type: NilClass
+keystone.ldap.tenant_tree_dn:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.tenant_tree_dn
+  :stack_default: 
+  :stack_type: NilClass
+keystone.ldap.tenant_filter:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.tenant_filter
+  :stack_default: 
+  :stack_type: NilClass
+keystone.ldap.tenant_objectclass:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.tenant_objectclass
+  :stack_default: groupOfNames
+  :stack_type: String
+keystone.ldap.tenant_id_attribute:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.tenant_id_attribute
+  :stack_default: cn
+  :stack_type: String
+keystone.ldap.tenant_member_attribute:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.tenant_member_attribute
+  :stack_default: member
+  :stack_type: String
+keystone.ldap.tenant_name_attribute:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.tenant_name_attribute
+  :stack_default: ou
+  :stack_type: String
+keystone.ldap.tenant_desc_attribute:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.tenant_desc_attribute
+  :stack_default: description
+  :stack_type: String
+keystone.ldap.tenant_enabled_attribute:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.tenant_enabled_attribute
+  :stack_default: enabled
+  :stack_type: String
+keystone.ldap.tenant_attribute_ignore:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.tenant_attribute_ignore
+  :stack_default: 
+  :stack_type: NilClass
+keystone.ldap.tenant_allow_create:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.tenant_allow_create
+  :stack_default: true
+  :stack_type: TrueClass
+keystone.ldap.tenant_allow_update:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.tenant_allow_update
+  :stack_default: true
+  :stack_type: TrueClass
+keystone.ldap.tenant_allow_delete:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.tenant_allow_delete
+  :stack_default: true
+  :stack_type: TrueClass
+keystone.ldap.tenant_enabled_emulation:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.tenant_enabled_emulation
+  :stack_default: false
+  :stack_type: FalseClass
+keystone.ldap.tenant_enabled_emulation_dn:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.tenant_enabled_emulation_dn
+  :stack_default: 
+  :stack_type: NilClass
+keystone.ldap.role_tree_dn:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.role_tree_dn
+  :stack_default: 
+  :stack_type: NilClass
+keystone.ldap.role_filter:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.role_filter
+  :stack_default: 
+  :stack_type: NilClass
+keystone.ldap.role_objectclass:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.role_objectclass
+  :stack_default: organizationalRole
+  :stack_type: String
+keystone.ldap.role_id_attribute:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.role_id_attribute
+  :stack_default: cn
+  :stack_type: String
+keystone.ldap.role_name_attribute:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.role_name_attribute
+  :stack_default: ou
+  :stack_type: String
+keystone.ldap.role_member_attribute:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.role_member_attribute
+  :stack_default: roleOccupant
+  :stack_type: String
+keystone.ldap.role_attribute_ignore:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.role_attribute_ignore
+  :stack_default: 
+  :stack_type: NilClass
+keystone.ldap.role_allow_create:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.role_allow_create
+  :stack_default: true
+  :stack_type: TrueClass
+keystone.ldap.role_allow_update:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.role_allow_update
+  :stack_default: true
+  :stack_type: TrueClass
+keystone.ldap.role_allow_delete:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.role_allow_delete
+  :stack_default: true
+  :stack_type: TrueClass
+keystone.ldap.group_tree_dn:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.group_tree_dn
+  :stack_default: 
+  :stack_type: NilClass
+keystone.ldap.group_filter:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.group_filter
+  :stack_default: 
+  :stack_type: NilClass
+keystone.ldap.group_objectclass:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.group_objectclass
+  :stack_default: groupOfNames
+  :stack_type: String
+keystone.ldap.group_id_attribute:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.group_id_attribute
+  :stack_default: cn
+  :stack_type: String
+keystone.ldap.group_name_attribute:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.group_name_attribute
+  :stack_default: ou
+  :stack_type: String
+keystone.ldap.group_member_attribute:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.group_member_attribute
+  :stack_default: member
+  :stack_type: String
+keystone.ldap.group_desc_attribute:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.group_desc_attribute
+  :stack_default: description
+  :stack_type: String
+keystone.ldap.group_domain_id_attribute:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.group_domain_id_attribute
+  :stack_default: businessCategory
+  :stack_type: String
+keystone.ldap.group_attribute_ignore:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.group_attribute_ignore
+  :stack_default: 
+  :stack_type: NilClass
+keystone.ldap.group_allow_create:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.group_allow_create
+  :stack_default: true
+  :stack_type: TrueClass
+keystone.ldap.group_allow_update:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.group_allow_update
+  :stack_default: true
+  :stack_type: TrueClass
+keystone.ldap.group_allow_delete:
+  :default: 
+  :type: NilClass
+  :stack_name: openstack.identity.ldap.group_allow_delete
+  :stack_default: true
+  :stack_type: TrueClass
+keystone.ldap.domain_tree_dn:
+  :default: 
+  :type: NilClass
+keystone.ldap.domain_filter:
+  :default: 
+  :type: NilClass
+keystone.ldap.domain_objectclass:
+  :default: 
+  :type: NilClass
+keystone.ldap.domain_id_attribute:
+  :default: 
+  :type: NilClass
+keystone.ldap.domain_name_attribute:
+  :default: 
+  :type: NilClass
+keystone.ldap.domain_member_attribute:
+  :default: 
+  :type: NilClass
+keystone.ldap.domain_desc_attribute:
+  :default: 
+  :type: NilClass
+keystone.ldap.domain_enabled_attribute:
+  :default: 
+  :type: NilClass
+keystone.ldap.domain_attribute_ignore:
+  :default: 
+  :type: NilClass
+keystone.ldap.domain_allow_create:
+  :default: 
+  :type: NilClass
+keystone.ldap.domain_allow_delete:
+  :default: 
+  :type: NilClass
+keystone.ldap.domain_allow_update:
+  :default: 
+  :type: NilClass
+keystone.ldap.domain_enabled_emulation:
+  :default: 
+  :type: NilClass
+keystone.ldap.domain_enabled_emulation_dn:
+  :default: 
+  :type: NilClass
+keystone.ldap.tls_cacertfile:
+  :default: 
+  :type: NilClass
+  :notes:
+  - does not appear to be used in rpc
+keystone.ldap.tls_cacertdir:
+  :default: 
+  :type: NilClass
+  :notes:
+  - does not appear to be used in rpc
+keystone.ldap.use_tls:
+  :default: 
+  :type: NilClass
+  :notes:
+  - does not appear to be used in rpc
+keystone.ldap.tls_req_cert:
+  :default: 
+  :type: NilClass
+  :notes:
+  - does not appear to be used in rpc
+keystone.pam.url:
+  :default: 
+  :type: NilClass
+keystone.pam.userid:
+  :default: 
+  :type: NilClass
+keystone.pam.password:
+  :default: 
+  :type: NilClass
+keystone.pki.enabled:
+  :default: true
+  :type: TrueClass
+  :notes:
+  - looks like you set `openstack.auth.strategy = pki' in stackforge
+keystone.services.admin-api.scheme:
+  :default: http
+  :type: String
+  :stack_name: openstack.endpoints.identity-admin.scheme
+  :stack_default: http
+  :stack_type: String
+keystone.services.admin-api.port:
+  :default: '35357'
+  :type: String
+  :stack_name: openstack.endpoints.identity-admin.port
+  :stack_default: '35357'
+  :stack_type: String
+keystone.services.admin-api.path:
+  :default: /v2.0
+  :type: String
+  :stack_name: openstack.endpoints.identity-admin.path
+  :stack_default: /v2.0
+  :stack_type: String
+keystone.services.admin-api.cert_file:
+  :default: keystone.pem
+  :type: String
+keystone.services.admin-api.key_file:
+  :default: keystone.key
+  :type: String
+keystone.services.admin-api.wsgi_file:
+  :default: admin
+  :type: String
+keystone.services.admin-api.network:
+  :default: nova
+  :type: String
+keystone.services.service-api.scheme:
+  :default: http
+  :type: String
+  :stack_name: openstack.endpoints.identity-api.scheme
+  :stack_default: http
+  :stack_type: String
+keystone.services.service-api.port:
+  :default: '5000'
+  :type: String
+  :stack_name: openstack.endpoints.identity-api.port
+  :stack_default: '5000'
+  :stack_type: String
+keystone.services.service-api.path:
+  :default: /v2.0
+  :type: String
+  :stack_name: openstack.endpoints.identity-api.path
+  :stack_default: /v2.0
+  :stack_type: String
+keystone.services.service-api.cert_file:
+  :default: keystone.pem
+  :type: String
+keystone.services.service-api.key_file:
+  :default: keystone.key
+  :type: String
+keystone.services.service-api.wsgi_file:
+  :default: main
+  :type: String
+keystone.services.service-api.network:
+  :default: public
+  :type: String
+keystone.services.internal-api.scheme:
+  :default: http
+  :type: String
+keystone.services.internal-api.network:
+  :default: management
+  :type: String
+keystone.services.internal-api.port:
+  :default: '5000'
+  :type: String
+keystone.services.internal-api.path:
+  :default: /v2.0
+  :type: String
+keystone.services.internal-api.cert_file:
+  :default: keystone.pem
+  :type: String
+keystone.services.internal-api.key_file:
+  :default: keystone.key
+  :type: String
+keystone.services.internal-api.wsgi_file:
+  :default: main
+  :type: String
+keystone.syslog.use:
+  :default: true
+  :type: TrueClass
+  :stack_name: openstack.identity.syslog.use
+  :stack_default: false
+  :stack_type: FalseClass
+keystone.syslog.facility:
+  :default: LOG_LOCAL3
+  :type: String
+  :stack_name: openstack.identity.syslog.facility
+  :stack_default: LOG_LOCAL2
+  :stack_type: String
+keystone.syslog.config_facility:
+  :default: local3
+  :type: String
+  :stack_name: openstack.identity.syslog.config_facility
+  :stack_default: local2
+  :stack_type: String
+keystone.roles:
+  :default:
+  - admin
+  - Member
+  - KeystoneAdmin
+  - KeystoneServiceAdmin
+  :type: Array
+keystone.tenants:
+  :default:
+  - admin
+  - service
+  :type: Array
+  :notes:
+  - openstack.identity.users.admin.default_tenant = admin
+  - openstack.identity.users.monitoring.default_tenant = service
+keystone.published_services:
+  :default: []
+  :type: Array
+keystone.config.log_verbosity:
+  :default: INFO
+  :type: String
+  :notes:
+  - this is the equivalent of openstack.identity.verbose, but this
+  - attribute isn't ever used in RPC recipes (cruft).
+keystone.admin_user:
+  :default: admin
+  :type: String
+  :stack_name: openstack.identity.admin_user
+  :stack_default: admin
+  :stack_type: String
+keystone.users.admin.default_tenant:
+  :default: admin
+  :type: String
+  :stack_name: openstack.identity.users.admin.default_tenant
+  :stack_default: admin
+  :stack_type: String
+keystone.users.admin.roles.admin:
+  :default:
+  - admin
+  :type: Array
+  :stack_name: openstack.identity.users.admin.roles.admin
+  :stack_default:
+  - admin
+  :stack_type: Array
+keystone.users.admin.roles.KeystoneAdmin:
+  :default:
+  - admin
+  :type: Array
+  :stack_name: openstack.identity.users.admin.roles.KeystoneAdmin
+  :stack_default:
+  - admin
+  :stack_type: Array
+keystone.users.admin.roles.KeystoneServiceAdmin:
+  :default:
+  - admin
+  :type: Array
+  :stack_name: openstack.identity.users.admin.roles.KeystoneServiceAdmin
+  :stack_default:
+  - admin
+  :stack_type: Array
+keystone.users.admin.password:
+  :default: secrete
+  :type: String
+  :notes:
+  - maybe `openstack.secret.user_passwords_data_bag = user_passwords'?
+keystone.users.monitoring.default_tenant:
+  :default: service
+  :type: String
+  :stack_name: openstack.identity.users.monitoring.default_tenant
+  :stack_default: service
+  :stack_type: String
+keystone.users.monitoring.roles.Member:
+  :default:
+  - admin
+  :type: Array
+  :stack_name: openstack.identity.users.monitoring.roles.Member
+  :stack_default:
+  - admin
+  :stack_type: Array
+keystone.users.monitoring.password:
+  :default: ''
+  :type: String
+  :notes:
+  - maybe `openstack.secret.user_passwords_data_bag = user_passwords'?
+keystone.platform.keystone_packages:
+  :default:
+  - keystone
+  :type: Array
+  :stack_name: openstack.identity.platform.keystone_packages
+  :stack_default:
+  - keystone
+  :stack_type: Array
+keystone.platform.supporting_packages:
+  :default:
+  - python-mysqldb
+  - python-ldap
+  - python-keystoneclient
+  - python-keystone
+  :type: Array
+  :notes:
+  - openstack.identity.platform.mysql_python_packages = ["python-mysqldb"]
+  - openstack.identity.platform.postgresql_python_packages = ["python-psycopg2"]
+  - openstack.identity.platform.memcache_python_packages = ["python-memcache"]
+keystone.platform.package_options:
+  :default: -o Dpkg::Options::='--force-confold' -o Dpkg::Options::='--force-confdef'
+  :type: String
+  :stack_name: openstack.identity.platform.package_options
+  :stack_default: -o Dpkg::Options::='--force-confold' -o Dpkg::Options::='--force-confdef'
+  :stack_type: String
+keystone.platform.keystone_service:
+  :default: keystone
+  :type: String
+  :stack_name: openstack.identity.platform.keystone_service
+  :stack_default: keystone
+  :stack_type: String
+keystone.ssl.dir:
+  :default: /etc/ssl
+  :type: String
+keystone.platform.keystone_procmatch:
+  :default: ^((/usr/bin/)?python\d? )?(/usr/bin/)?keystone-all\b
+  :type: String
+  :notes:
+  - openstack.identity.platform.keystone_process_name = keystone-all

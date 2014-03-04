@@ -1,0 +1,944 @@
+---
+enable_monit:
+  :default: false
+  :type: FalseClass
+  :stack_name: enable_monit
+  :stack_default: false
+  :stack_type: FalseClass
+nova.rabbitmq.use_ha_queues:
+  :default: false
+  :type: FalseClass
+  :stack_name: openstack.compute.rabbit.ha
+  :stack_default: false
+  :stack_type: FalseClass
+nova.notification.driver:
+  :default: no_op
+  :type: String
+nova.notification.topics:
+  :default: notifications
+  :type: String
+nova.debug:
+  :default: false
+  :type: FalseClass
+  :stack_name: openstack.compute.debug
+  :stack_default: 'False'
+  :stack_type: String
+nova.db.name:
+  :default: nova
+  :type: String
+  :stack_name: openstack.db.compute.db_name
+  :stack_default: nova
+  :stack_type: String
+nova.db.username:
+  :default: nova
+  :type: String
+  :stack_name: openstack.compute.db.username
+  :stack_default: nova
+  :stack_type: String
+nova.service_tenant_name:
+  :default: service
+  :type: String
+  :stack_name: openstack.compute.service_tenant_name
+  :stack_default: service
+  :stack_type: String
+nova.service_user:
+  :default: nova
+  :type: String
+  :stack_name: openstack.compute.service_user
+  :stack_default: nova
+  :stack_type: String
+nova.service_role:
+  :default: admin
+  :type: String
+  :stack_name: openstack.compute.service_role
+  :stack_default: admin
+  :stack_type: String
+nova.volumes.enabled:
+  :default: false
+  :type: FalseClass
+  :notes:
+  - don't see this used in rpc anywhere
+nova.services.api.scheme:
+  :default: http
+  :type: String
+  :stack_name: openstack.endpoints.compute-api.scheme
+  :stack_default: http
+  :stack_type: String
+nova.services.api.port:
+  :default: 8774
+  :type: Fixnum
+  :stack_name: openstack.endpoints.compute-api.port
+  :stack_default: '8774'
+  :stack_type: String
+nova.services.api.path:
+  :default: /v2/%(tenant_id)s
+  :type: String
+  :stack_name: openstack.endpoints.compute-api.path
+  :stack_default: /v2/%(tenant_id)s
+  :stack_type: String
+nova.services.api.network:
+  :default: public
+  :type: String
+nova.services.api.cert_file:
+  :default: nova.pem
+  :type: String
+nova.services.api.key_file:
+  :default: nova.key
+  :type: String
+nova.services.api.wsgi_file:
+  :default: nova-api-os-compute
+  :type: String
+nova.services.internal-api.scheme:
+  :default: http
+  :type: String
+nova.services.internal-api.port:
+  :default: 8774
+  :type: Fixnum
+nova.services.internal-api.path:
+  :default: /v2/%(tenant_id)s
+  :type: String
+nova.services.internal-api.network:
+  :default: management
+  :type: String
+nova.services.admin-api.scheme:
+  :default: http
+  :type: String
+nova.services.admin-api.port:
+  :default: 8774
+  :type: Fixnum
+nova.services.admin-api.path:
+  :default: /v2/%(tenant_id)s
+  :type: String
+nova.services.admin-api.network:
+  :default: management
+  :type: String
+nova.services.ec2-admin.scheme:
+  :default: http
+  :type: String
+  :stack_name: openstack.endpoints.compute-ec2-admin.scheme
+  :stack_default: http
+  :stack_type: String
+nova.services.ec2-admin.port:
+  :default: 8773
+  :type: Fixnum
+  :stack_name: openstack.endpoints.compute-ec2-admin.port
+  :stack_default: '8773'
+  :stack_type: String
+nova.services.ec2-admin.path:
+  :default: /services/Admin
+  :type: String
+  :stack_name: openstack.endpoints.compute-ec2-admin.path
+  :stack_default: /services/Admin
+  :stack_type: String
+nova.services.ec2-admin.network:
+  :default: public
+  :type: String
+nova.services.ec2-admin.cert_file:
+  :default: nova.pem
+  :type: String
+nova.services.ec2-admin.key_file:
+  :default: nova.key
+  :type: String
+nova.services.ec2-admin.wsgi_file:
+  :default: nova-api-ec2
+  :type: String
+nova.services.ec2-public.scheme:
+  :default: http
+  :type: String
+nova.services.ec2-public.port:
+  :default: 8773
+  :type: Fixnum
+nova.services.ec2-public.path:
+  :default: /services/Cloud
+  :type: String
+nova.services.ec2-public.network:
+  :default: public
+  :type: String
+nova.services.ec2-public.cert_file:
+  :default: nova.pem
+  :type: String
+nova.services.ec2-public.key_file:
+  :default: nova.key
+  :type: String
+nova.services.ec2-public.wsgi_file:
+  :default: nova-api-ec2
+  :type: String
+nova.services.xvpvnc-proxy.scheme:
+  :default: http
+  :type: String
+  :stack_name: openstack.endpoints.compute-xvpvnc.scheme
+  :stack_default: http
+  :stack_type: String
+nova.services.xvpvnc-proxy.port:
+  :default: 6081
+  :type: Fixnum
+  :stack_name: openstack.endpoints.compute-xvpvnc.port
+  :stack_default: '6081'
+  :stack_type: String
+nova.services.xvpvnc-proxy.path:
+  :default: /console
+  :type: String
+  :stack_name: openstack.endpoints.compute-xvpvnc.path
+  :stack_default: /console
+  :stack_type: String
+nova.services.xvpvnc-proxy.network:
+  :default: nova
+  :type: String
+nova.services.novnc-proxy.scheme:
+  :default: http
+  :type: String
+  :stack_name: openstack.endpoints.compute-novnc.scheme
+  :stack_default: http
+  :stack_type: String
+nova.services.novnc-proxy.port:
+  :default: 6080
+  :type: Fixnum
+  :stack_name: openstack.endpoints.compute-novnc.port
+  :stack_default: '6080'
+  :stack_type: String
+nova.services.novnc-proxy.path:
+  :default: /vnc_auto.html
+  :type: String
+  :stack_name: openstack.endpoints.compute-novnc.path
+  :stack_default: /vnc_auto.html
+  :stack_type: String
+nova.services.novnc-proxy.network:
+  :default: nova
+  :type: String
+nova.services.novnc-proxy.cert_file:
+  :default: novnc.pem
+  :type: String
+nova.services.novnc-proxy.key_file:
+  :default: novnc.key
+  :type: String
+nova.services.novnc-server.scheme:
+  :default: http
+  :type: String
+nova.services.novnc-server.port:
+  :default: 6080
+  :type: Fixnum
+nova.services.novnc-server.path:
+  :default: /vnc_auto.html
+  :type: String
+nova.services.novnc-server.network:
+  :default: nova
+  :type: String
+nova.services.volume.scheme:
+  :default: http
+  :type: String
+nova.services.volume.port:
+  :default: 8776
+  :type: Fixnum
+nova.services.volume.path:
+  :default: /v1/%(tenant_id)s
+  :type: String
+nova.services.volume.network:
+  :default: public
+  :type: String
+nova.services.volume.cinder_catalog_info:
+  :default: volume:cinder:publicURL
+  :type: String
+nova.compute.connection_type:
+  :default: libvirt
+  :type: String
+  :notes:
+  - cookbook-openstack-compute/templates/default/nova.conf.erb:connection_type=libvirt
+nova.scheduler.scheduler_driver:
+  :default: nova.scheduler.filter_scheduler.FilterScheduler
+  :type: String
+  :stack_name: openstack.compute.scheduler.scheduler_driver
+  :stack_default: nova.scheduler.filter_scheduler.FilterScheduler
+  :stack_type: String
+nova.scheduler.scheduler_weight_classes:
+  :default: nova.scheduler.weights.ram.RAMWeigher
+  :type: String
+nova.scheduler.ram_weight_multiplier:
+  :default: 1.0
+  :type: Float
+nova.scheduler.default_filters:
+  :default:
+  - AvailabilityZoneFilter
+  - RamFilter
+  - ComputeFilter
+  - CoreFilter
+  - SameHostFilter
+  - DifferentHostFilter
+  - RetryFilter
+  :type: Array
+  :stack_name: openstack.compute.scheduler.default_filters
+  :stack_default:
+  - AvailabilityZoneFilter
+  - RamFilter
+  - ComputeFilter
+  - CoreFilter
+  - SameHostFilter
+  - DifferentHostFilter
+  :stack_type: Array
+  :notes:
+  - only difference is RPC has "RetryFilter"
+nova.libvirt.virt_type:
+  :default: kvm
+  :type: String
+  :stack_name: openstack.compute.libvirt.virt_type
+  :stack_default: kvm
+  :stack_type: String
+nova.libvirt.vncserver_listen:
+  :default: 
+  :type: NilClass
+nova.libvirt.vncserver_proxyclient_address:
+  :default: node["ipaddress"]
+  :type: String
+nova.libvirt.auth_tcp:
+  :default: none
+  :type: String
+  :stack_name: openstack.compute.libvirt.auth_tcp
+  :stack_default: none
+  :stack_type: String
+nova.libvirt.remove_unused_base_images:
+  :default: true
+  :type: TrueClass
+  :stack_name: openstack.compute.libvirt.remove_unused_base_images
+  :stack_default: true
+  :stack_type: TrueClass
+nova.libvirt.remove_unused_resized_minimum_age_seconds:
+  :default: 3600
+  :type: Fixnum
+  :stack_name: openstack.compute.libvirt.remove_unused_resized_minimum_age_seconds
+  :stack_default: 3600
+  :stack_type: Fixnum
+nova.libvirt.remove_unused_original_minimum_age_seconds:
+  :default: 3600
+  :type: Fixnum
+  :stack_name: openstack.compute.libvirt.remove_unused_original_minimum_age_seconds
+  :stack_default: 3600
+  :stack_type: Fixnum
+nova.libvirt.checksum_base_images:
+  :default: false
+  :type: FalseClass
+  :stack_name: openstack.compute.libvirt.checksum_base_images
+  :stack_default: false
+  :stack_type: FalseClass
+nova.libvirt.libvirt_inject_key:
+  :default: false
+  :type: FalseClass
+nova.libvirt.libvirt_inject_password:
+  :default: false
+  :type: FalseClass
+  :stack_name: openstack.compute.libvirt.libvirt_inject_password
+  :stack_default: false
+  :stack_type: FalseClass
+nova.libvirt.libvirt_inject_partition:
+  :default: 1
+  :type: Fixnum
+nova.libvirt.disk_cachemodes:
+  :default:
+  - file=none
+  :type: Array
+nova.libvirt.libvirt_cpu_model:
+  :default: 
+  :type: NilClass
+nova.libvirt.libvirt_cpu_mode:
+  :default: 
+  :type: NilClass
+  :notes:
+  - cookbook-openstack-compute/templates/default/nova.conf.erb:libvirt_cpu_mode=none
+nova.config.use_single_default_gateway:
+  :default: false
+  :type: FalseClass
+  :stack_name: openstack.compute.network.use_single_default_gateway
+  :stack_default: false
+  :stack_type: FalseClass
+nova.config.availability_zone:
+  :default: nova
+  :type: String
+  :stack_name: openstack.compute.config.availability_zone
+  :stack_default: nova
+  :stack_type: String
+nova.config.default_schedule_zone:
+  :default: nova
+  :type: String
+  :stack_name: openstack.compute.config.default_schedule_zone
+  :stack_default: nova
+  :stack_type: String
+nova.config.force_raw_images:
+  :default: false
+  :type: FalseClass
+  :stack_name: openstack.compute.config.force_raw_images
+  :stack_default: false
+  :stack_type: FalseClass
+nova.config.allow_same_net_traffic:
+  :default: true
+  :type: TrueClass
+  :stack_name: openstack.compute.config.allow_same_net_traffic
+  :stack_default: true
+  :stack_type: TrueClass
+nova.config.osapi_max_limit:
+  :default: 1000
+  :type: Fixnum
+  :stack_name: openstack.compute.config.osapi_max_limit
+  :stack_default: 1000
+  :stack_type: Fixnum
+nova.config.cpu_allocation_ratio:
+  :default: 16.0
+  :type: Float
+  :stack_name: openstack.compute.config.cpu_allocation_ratio
+  :stack_default: 16.0
+  :stack_type: Float
+nova.config.ram_allocation_ratio:
+  :default: 1.5
+  :type: Float
+  :stack_name: openstack.compute.config.ram_allocation_ratio
+  :stack_default: 1.5
+  :stack_type: Float
+nova.config.disk_allocation_ratio:
+  :default: 1.0
+  :type: Float
+  :stack_name: openstack.compute.config.disk_allocation_ratio
+  :stack_default: 1.0
+  :stack_type: Float
+nova.config.snapshot_image_format:
+  :default: qcow2
+  :type: String
+  :stack_name: openstack.compute.config.snapshot_image_format
+  :stack_default: qcow2
+  :stack_type: String
+nova.config.start_guests_on_host_boot:
+  :default: false
+  :type: FalseClass
+  :stack_name: openstack.compute.config.start_guests_on_host_boot
+  :stack_default: false
+  :stack_type: FalseClass
+nova.config.scheduler_max_attempts:
+  :default: 3
+  :type: Fixnum
+nova.config.ec2_workers:
+  :default: '[8, node["cpu"]["total"].to_i].min'
+  :type: String
+  :notes:
+  - type is actually Array; defanged value
+nova.config.osapi_compute_workers:
+  :default: '[8, node["cpu"]["total"].to_i].min'
+  :type: String
+  :notes:
+  - type is actually Array; defanged value
+nova.config.metadata_workers:
+  :default: '[8, node["cpu"]["total"].to_i].min'
+  :type: String
+  :notes:
+  - type is actually Array; defanged value
+  - cookbook-openstack-compute/templates/default/nova.conf.erb:ec2_workers=<%= node["cpu"]["total"]
+    %>
+  - cookbook-openstack-compute/templates/default/nova.conf.erb:osapi_compute_workers=<%=
+    node["cpu"]["total"] %>
+  - cookbook-openstack-compute/templates/default/nova.conf.erb:metadata_workers=<%=
+    node["cpu"]["total"] %>
+nova.config.osapi_volume_workers:
+  :default: '[8, node["cpu"]["total"].to_i].min'
+  :type: String
+  :notes:
+  - type is actually Array; defanged value
+nova.config.hardware_gateway:
+  :default: 
+  :type: NilClass
+nova.config.dns_servers:
+  :default: []
+  :type: Array
+  :stack_name: openstack.compute.network.neutron.dns_server
+  :stack_default: 8.8.8.8
+  :stack_type: String
+  :notes:
+  - StackForge attribute is NOT an array!
+nova.config.dnsmasq_config_file:
+  :default: /etc/nova/dnsmasq-nova.conf
+  :type: String
+nova.config.quota_fixed_ips:
+  :default: '40'
+  :type: String
+  :stack_name: openstack.compute.config.quota_fixed_ips
+  :stack_default: -1
+  :stack_type: Fixnum
+nova.config.quota_instances:
+  :default: '20'
+  :type: String
+  :stack_name: openstack.compute.config.quota_instances
+  :stack_default: 10
+  :stack_type: Fixnum
+nova.config.resume_guests_state_on_host_boot:
+  :default: false
+  :type: FalseClass
+  :stack_name: openstack.compute.config.resume_guests_state_on_host_boot
+  :stack_default: true
+  :stack_type: TrueClass
+nova.config.force_config_drive:
+  :default: false
+  :type: FalseClass
+  :stack_name: openstack.compute.config.force_config_drive
+  :stack_default: 'false'
+  :stack_type: String
+  :notes:
+  - StackForge attribute is NOT a boolean!
+nova.config.image_cache_manager_interval:
+  :default: 2400
+  :type: Fixnum
+nova.config.max_age:
+  :default: 0
+  :type: Fixnum
+nova.config.reserved_host_disk_mb:
+  :default: 0
+  :type: Fixnum
+nova.config.log_verbosity:
+  :default: INFO
+  :type: String
+  :notes:
+  - this variable is not used in RPC cookbooks
+nova.config.quota_security_groups:
+  :default: 50
+  :type: Fixnum
+  :stack_name: openstack.compute.config.quota_security_groups
+  :stack_default: 50
+  :stack_type: Fixnum
+nova.config.quota_security_group_rules:
+  :default: 20
+  :type: Fixnum
+  :stack_name: openstack.compute.config.quota_security_group_rules
+  :stack_default: 20
+  :stack_type: Fixnum
+nova.config.sql_connection_debug:
+  :default: 0
+  :type: Fixnum
+nova.config.sql_idle_timeout:
+  :default: 3600
+  :type: Fixnum
+nova.config.sql_retry_interval:
+  :default: 10
+  :type: Fixnum
+nova.config.sql_max_retries:
+  :default: 10
+  :type: Fixnum
+nova.config.sql_min_pool_size:
+  :default: 1
+  :type: Fixnum
+nova.ratelimit.settings.generic-post-limit.verb:
+  :default: POST
+  :type: String
+  :stack_name: openstack.compute.ratelimit.settings.generic-post-limit.verb
+  :stack_default: POST
+  :stack_type: String
+nova.ratelimit.settings.generic-post-limit.uri:
+  :default: '*'
+  :type: String
+  :stack_name: openstack.compute.ratelimit.settings.generic-post-limit.uri
+  :stack_default: '*'
+  :stack_type: String
+nova.ratelimit.settings.generic-post-limit.regex:
+  :default: .*
+  :type: String
+  :stack_name: openstack.compute.ratelimit.settings.generic-post-limit.regex
+  :stack_default: .*
+  :stack_type: String
+nova.ratelimit.settings.generic-post-limit.limit:
+  :default: '10'
+  :type: String
+  :stack_name: openstack.compute.ratelimit.settings.generic-post-limit.limit
+  :stack_default: '10'
+  :stack_type: String
+nova.ratelimit.settings.generic-post-limit.interval:
+  :default: MINUTE
+  :type: String
+  :stack_name: openstack.compute.ratelimit.settings.generic-post-limit.interval
+  :stack_default: MINUTE
+  :stack_type: String
+nova.ratelimit.settings.create-servers-limit.verb:
+  :default: POST
+  :type: String
+  :stack_name: openstack.compute.ratelimit.settings.create-servers-limit.verb
+  :stack_default: POST
+  :stack_type: String
+nova.ratelimit.settings.create-servers-limit.uri:
+  :default: '*/servers'
+  :type: String
+  :stack_name: openstack.compute.ratelimit.settings.create-servers-limit.uri
+  :stack_default: '*/servers'
+  :stack_type: String
+nova.ratelimit.settings.create-servers-limit.regex:
+  :default: ^/servers
+  :type: String
+  :stack_name: openstack.compute.ratelimit.settings.create-servers-limit.regex
+  :stack_default: ^/servers
+  :stack_type: String
+nova.ratelimit.settings.create-servers-limit.limit:
+  :default: '50'
+  :type: String
+  :stack_name: openstack.compute.ratelimit.settings.create-servers-limit.limit
+  :stack_default: '50'
+  :stack_type: String
+nova.ratelimit.settings.create-servers-limit.interval:
+  :default: DAY
+  :type: String
+  :stack_name: openstack.compute.ratelimit.settings.create-servers-limit.interval
+  :stack_default: DAY
+  :stack_type: String
+nova.ratelimit.settings.generic-put-limit.verb:
+  :default: PUT
+  :type: String
+  :stack_name: openstack.compute.ratelimit.settings.generic-put-limit.verb
+  :stack_default: PUT
+  :stack_type: String
+nova.ratelimit.settings.generic-put-limit.uri:
+  :default: '*'
+  :type: String
+  :stack_name: openstack.compute.ratelimit.settings.generic-put-limit.uri
+  :stack_default: '*'
+  :stack_type: String
+nova.ratelimit.settings.generic-put-limit.regex:
+  :default: .*
+  :type: String
+  :stack_name: openstack.compute.ratelimit.settings.generic-put-limit.regex
+  :stack_default: .*
+  :stack_type: String
+nova.ratelimit.settings.generic-put-limit.limit:
+  :default: '10'
+  :type: String
+  :stack_name: openstack.compute.ratelimit.settings.generic-put-limit.limit
+  :stack_default: '10'
+  :stack_type: String
+nova.ratelimit.settings.generic-put-limit.interval:
+  :default: MINUTE
+  :type: String
+  :stack_name: openstack.compute.ratelimit.settings.generic-put-limit.interval
+  :stack_default: MINUTE
+  :stack_type: String
+nova.ratelimit.settings.changes-since-limit.verb:
+  :default: GET
+  :type: String
+  :stack_name: openstack.compute.ratelimit.settings.changes-since-limit.verb
+  :stack_default: GET
+  :stack_type: String
+nova.ratelimit.settings.changes-since-limit.uri:
+  :default: '*changes-since*'
+  :type: String
+  :stack_name: openstack.compute.ratelimit.settings.changes-since-limit.uri
+  :stack_default: '*changes-since*'
+  :stack_type: String
+nova.ratelimit.settings.changes-since-limit.regex:
+  :default: .*changes-since.*
+  :type: String
+  :stack_name: openstack.compute.ratelimit.settings.changes-since-limit.regex
+  :stack_default: .*changes-since.*
+  :stack_type: String
+nova.ratelimit.settings.changes-since-limit.limit:
+  :default: '3'
+  :type: String
+  :stack_name: openstack.compute.ratelimit.settings.changes-since-limit.limit
+  :stack_default: '3'
+  :stack_type: String
+nova.ratelimit.settings.changes-since-limit.interval:
+  :default: MINUTE
+  :type: String
+  :stack_name: openstack.compute.ratelimit.settings.changes-since-limit.interval
+  :stack_default: MINUTE
+  :stack_type: String
+nova.ratelimit.settings.generic-delete-limit.verb:
+  :default: DELETE
+  :type: String
+  :stack_name: openstack.compute.ratelimit.settings.generic-delete-limit.verb
+  :stack_default: DELETE
+  :stack_type: String
+nova.ratelimit.settings.generic-delete-limit.uri:
+  :default: '*'
+  :type: String
+  :stack_name: openstack.compute.ratelimit.settings.generic-delete-limit.uri
+  :stack_default: '*'
+  :stack_type: String
+nova.ratelimit.settings.generic-delete-limit.regex:
+  :default: .*
+  :type: String
+  :stack_name: openstack.compute.ratelimit.settings.generic-delete-limit.regex
+  :stack_default: .*
+  :stack_type: String
+nova.ratelimit.settings.generic-delete-limit.limit:
+  :default: '100'
+  :type: String
+  :stack_name: openstack.compute.ratelimit.settings.generic-delete-limit.limit
+  :stack_default: '100'
+  :stack_type: String
+nova.ratelimit.settings.generic-delete-limit.interval:
+  :default: MINUTE
+  :type: String
+  :stack_name: openstack.compute.ratelimit.settings.generic-delete-limit.interval
+  :stack_default: MINUTE
+  :stack_type: String
+nova.ratelimit.api.enabled:
+  :default: true
+  :type: TrueClass
+  :stack_name: openstack.compute.api.auth_strategy
+  :stack_default: keystone
+  :stack_type: String
+  :notes:
+  - set the StackForge attribute to "keystone_nolimit" to attain the equivalent of
+    RPC "false"
+nova.ratelimit.volume.enabled:
+  :default: true
+  :type: TrueClass
+  :notes:
+  - doesn't seem to be used in RPC anywhere
+nova.platform.common_packages:
+  :default:
+  - nova-common
+  - python-nova
+  - python-novaclient
+  - python-eventlet
+  :type: Array
+  :stack_name: openstack.compute.platform.common_packages
+  :stack_default:
+  - nova-common
+  :stack_type: Array
+nova.platform.cinder_multipath_packages:
+  :default:
+  - multipath-tools
+  - sysfsutils
+  - sg3-utils
+  :type: Array
+nova.platform.api_ec2_packages:
+  :default:
+  - nova-api-ec2
+  :type: Array
+  :stack_name: openstack.compute.platform.api_ec2_packages
+  :stack_default:
+  - nova-api-ec2
+  :stack_type: Array
+nova.platform.api_ec2_service:
+  :default: nova-api-ec2
+  :type: String
+  :stack_name: openstack.compute.platform.api_ec2_service
+  :stack_default: nova-api-ec2
+  :stack_type: String
+nova.platform.api_ec2_procmatch:
+  :default: ^((/usr/bin/)?python\d? )?(/usr/bin/)?nova-api-ec2\b
+  :type: String
+  :notes:
+  - openstack.compute.platform.api_ec2_process_name doesn't exist
+nova.platform.api_metadata_packages:
+  :default:
+  - python-memcache
+  - nova-api-metadata
+  :type: Array
+  :stack_name: openstack.compute.platform.compute_api_metadata_packages
+  :stack_default:
+  - nova-api-metadata
+  :stack_type: Array
+nova.platform.api_metadata_service:
+  :default: nova-api-metadata
+  :type: String
+  :stack_name: openstack.compute.platform.compute_api_metadata_service
+  :stack_default: nova-api-metadata
+  :stack_type: String
+nova.platform.api_metadata_procmatch:
+  :default: ^((/usr/bin/)?python\d? )?(/usr/bin/)?nova-api-metadata\b
+  :type: String
+  :stack_name: openstack.compute.platform.compute_api_metadata_process_name
+  :stack_default: nova-api-metadata
+  :stack_type: String
+nova.platform.api_os_compute_packages:
+  :default:
+  - nova-api-os-compute
+  :type: Array
+  :stack_name: openstack.compute.platform.api_os_compute_packages
+  :stack_default:
+  - nova-api-os-compute
+  :stack_type: Array
+nova.platform.api_os_compute_service:
+  :default: nova-api-os-compute
+  :type: String
+  :stack_name: openstack.compute.platform.api_os_compute_service
+  :stack_default: nova-api-os-compute
+  :stack_type: String
+nova.platform.api_os_compute_procmatch:
+  :default: ^((/usr/bin/)?python\d? )?(/usr/bin/)?nova-api-os-compute\b
+  :type: String
+  :stack_name: openstack.compute.platform.api_os_compute_process_name
+  :stack_default: nova-api-os-compute
+  :stack_type: String
+nova.platform.api_os_volume_packages:
+  :default:
+  - nova-api-os-volume
+  :type: Array
+nova.platform.api_os_volume_service:
+  :default: nova-api-os-volume
+  :type: String
+nova.platform.api_os_volume_procmatch:
+  :default: ^((/usr/bin/)?python\d? )?(/usr/bin/)?nova-api-os-volume\b
+  :type: String
+nova.platform.nova_cert_packages:
+  :default:
+  - nova-cert
+  :type: Array
+  :stack_name: openstack.compute.platform.compute_cert_packages
+  :stack_default:
+  - nova-cert
+  :stack_type: Array
+nova.platform.nova_cert_service:
+  :default: nova-cert
+  :type: String
+  :stack_name: openstack.compute.platform.compute_cert_service
+  :stack_default: nova-cert
+  :stack_type: String
+nova.platform.nova_cert_procmatch:
+  :default: ^((/usr/bin/)?python\d? )?(/usr/bin/)?nova-cert\b
+  :type: String
+  :notes:
+  - openstack.compute.platform.compute_cert_process_name doesn't exist
+nova.platform.nova_compute_packages:
+  :default:
+  - nova-compute
+  - python-guestfs
+  :type: Array
+  :stack_name: openstack.compute.platform.compute_compute_packages
+  :stack_default:
+  - nova-compute
+  :stack_type: Array
+nova.platform.nova_compute_service:
+  :default: nova-compute
+  :type: String
+  :stack_name: openstack.compute.platform.compute_compute_service
+  :stack_default: nova-compute
+  :stack_type: String
+nova.platform.nova_compute_procmatch:
+  :default: ^((/usr/bin/)?python\d? )?(/usr/bin/)?nova-compute\b
+  :type: String
+  :notes:
+  - openstack.compute.platform.compute_compute_process_name doesn't exist
+nova.platform.nova_conductor_packages:
+  :default:
+  - nova-conductor
+  :type: Array
+  :stack_name: openstack.compute.platform.compute_conductor_packages
+  :stack_default:
+  - nova-conductor
+  :stack_type: Array
+nova.platform.nova_conductor_service:
+  :default: nova-conductor
+  :type: String
+  :stack_name: openstack.compute.platform.compute_conductor_service
+  :stack_default: nova-conductor
+  :stack_type: String
+nova.platform.nova_conductor_procmatch:
+  :default: ^((/usr/bin/)?python\d? )?(/usr/bin/)?nova-conductor\b
+  :type: String
+  :notes:
+  - openstack.compute.platform.compute_conductor_process_name doesn't exist
+nova.platform.nova_scheduler_packages:
+  :default:
+  - nova-scheduler
+  :type: Array
+  :stack_name: openstack.compute.platform.compute_scheduler_packages
+  :stack_default:
+  - nova-scheduler
+  :stack_type: Array
+nova.platform.nova_scheduler_service:
+  :default: nova-scheduler
+  :type: String
+  :stack_name: openstack.compute.platform.compute_scheduler_service
+  :stack_default: nova-scheduler
+  :stack_type: String
+nova.platform.nova_scheduler_procmatch:
+  :default: ^((/usr/bin/)?python\d? )?(/usr/bin/)?nova-scheduler\b
+  :type: String
+  :notes:
+  - openstack.compute.platform.compute_scheduler_process_name doesn't exist
+nova.platform.nova_vncproxy_packages:
+  :default:
+  - novnc
+  - websockify
+  - nova-novncproxy
+  :type: Array
+  :stack_name: openstack.compute.platform.compute_vncproxy_packages
+  :stack_default:
+  - novnc
+  - websockify
+  - nova-novncproxy
+  :stack_type: Array
+nova.platform.nova_vncproxy_service:
+  :default: nova-novncproxy
+  :type: String
+  :stack_name: openstack.compute.platform.compute_vncproxy_service
+  :stack_default: nova-novncproxy
+  :stack_type: String
+nova.platform.nova_vncproxy_procmatch:
+  :default: ^((/usr/bin/)?python\d? )?(/usr/bin/)?nova-novncproxy\b
+  :type: String
+  :notes:
+  - openstack.compute.platform.compute_vncproxy_process_name doesn't exist
+nova.platform.nova_vncproxy_consoleauth_packages:
+  :default:
+  - python-memcache
+  - nova-consoleauth
+  :type: Array
+  :stack_name: openstack.compute.platform.compute_vncproxy_consoleauth_packages
+  :stack_default:
+  - nova-consoleauth
+  :stack_type: Array
+nova.platform.nova_vncproxy_consoleauth_service:
+  :default: nova-consoleauth
+  :type: String
+  :stack_name: openstack.compute.platform.compute_vncproxy_consoleauth_service
+  :stack_default: nova-consoleauth
+  :stack_type: String
+nova.platform.nova_vncproxy_consoleauth_procmatch:
+  :default: ^((/usr/bin/)?python\d? )?(/usr/bin/)?nova-consoleauth\b
+  :type: String
+  :stack_name: openstack.compute.platform.compute_vncproxy_consoleauth_process_name
+  :stack_default: nova-consoleauth
+  :stack_type: String
+nova.platform.nova_volume_packages:
+  :default:
+  - nova-volume
+  - tgt
+  :type: Array
+nova.platform.nova_volume_service:
+  :default: nova-volume
+  :type: String
+nova.platform.nova_volume_procmatch:
+  :default: ^((/usr/bin/)?python\d? )?(/usr/bin/)?nova-volume\b
+  :type: String
+nova.platform.iscsi_helper:
+  :default: tgtadm
+  :type: String
+  :stack_name: openstack.compute.platform.iscsi_helper
+  :stack_default: tgtadm
+  :stack_type: String
+nova.platform.iscsi_service:
+  :default: tgt
+  :type: String
+nova.platform.libvirt_packages:
+  :default:
+  - libvirt-bin
+  - python-libvirt
+  - pm-utils
+  - sysfsutils
+  :type: Array
+  :stack_name: openstack.compute.platform.libvirt_packages
+  :stack_default:
+  - libvirt-bin
+  :stack_type: Array
+nova.platform.libvirt_service:
+  :default: libvirt-bin
+  :type: String
+  :stack_name: openstack.compute.platform.libvirt_service
+  :stack_default: libvirt-bin
+  :stack_type: String
+nova.platform.mysql_service:
+  :default: mysql
+  :type: String
+  :stack_name: openstack.compute.platform.mysql_service
+  :stack_default: mysql
+  :stack_type: String
+nova.platform.package_options:
+  :default: -o Dpkg::Options::='--force-confold' -o Dpkg::Options::='--force-confdef'
+  :type: String
+  :stack_name: openstack.compute.platform.package_overrides
+  :stack_default: -o Dpkg::Options::='--force-confold' -o Dpkg::Options::='--force-confdef'
+  :stack_type: String
+nova.ssl.dir:
+  :default: /etc/ssl
+  :type: String

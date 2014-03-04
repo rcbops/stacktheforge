@@ -1,0 +1,23 @@
+---
+haproxy.admin_port:
+  :default: 8040
+  :type: Fixnum
+haproxy.services.api.host:
+  :default: ''
+  :type: String
+haproxy.platform.haproxy_packages:
+  :default:
+  - haproxy
+  :type: Array
+haproxy.platform.haproxy_service:
+  :default: haproxy
+  :type: String
+haproxy.platform.haproxy_process_name:
+  :default: ^/usr/sbin/haproxy\b
+  :type: String
+haproxy.platform.service_bin:
+  :default: /usr/sbin/service
+  :type: String
+haproxy.platform.package_options:
+  :default: --force-yes -o Dpkg::Options::='--force-confold' -o Dpkg::Options::='--force-confdef'
+  :type: String

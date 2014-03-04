@@ -1,0 +1,80 @@
+---
+tempest.branch:
+  :default: 
+  :type: NilClass
+tempest.use_ssl:
+  :default: false
+  :type: FalseClass
+tempest.tenant_isolation:
+  :default: true
+  :type: TrueClass
+tempest.tenant_reuse:
+  :default: true
+  :type: TrueClass
+tempest.alt_ssh_user:
+  :default: cirros
+  :type: String
+tempest.ssh_user:
+  :default: cirros
+  :type: String
+tempest.user1:
+  :default: tempest_monitor_user1
+  :type: String
+tempest.user1_pass:
+  :default: monpass
+  :type: String
+tempest.user1_tenant:
+  :default: tempest_monitor_tenant1
+  :type: String
+tempest.user2:
+  :default: tempest_monitor_user2
+  :type: String
+tempest.user2_pass:
+  :default: monpass
+  :type: String
+tempest.user2_tenant:
+  :default: tempest_monitor_tenant2
+  :type: String
+tempest.test_img1.id:
+  :default: 
+  :type: NilClass
+tempest.test_img1.url:
+  :default: https://launchpadlibrarian.net/83305348/cirros-0.3.0-x86_64-disk.img
+  :type: String
+tempest.test_img2:
+  :default: '12123'
+  :type: String
+tempest.img1_flavor:
+  :default: '1'
+  :type: String
+tempest.img2_flavor:
+  :default: '2'
+  :type: String
+tempest.admin:
+  :default: admin
+  :type: String
+tempest.admin_pass:
+  :default: secrete
+  :type: String
+tempest.admin_tenant:
+  :default: admin
+  :type: String
+tempest.runlist.grizzly:
+  :default:
+  - tempest.tests.compute.images.test_images_oneserver
+  - tempest.tests.image.v2.test_images
+  :type: Array
+tempest.runlist.folsom:
+  :default:
+  - tempest.tests.compute.test_create_server.py:ServersTestJSON.test_list_servers_with_detail
+  - tempest.tests.compute.images.test_images.py:ImagesTestJSON.test_create_delete_image
+  :type: Array
+tempest.runlist.essex-final:
+  :default: 
+  :type: NilClass
+tempest.interval:
+  :default: '5'
+  :type: String
+tempest.use_cron:
+  :default: false
+  :type: FalseClass

@@ -1,0 +1,53 @@
+---
+monit.poll_interval:
+  :default: 60
+  :type: Fixnum
+monit.poll_start_delay:
+  :default: 30
+  :type: Fixnum
+monit.bind_port:
+  :default: '2812'
+  :type: String
+monit.bind_host:
+  :default: localhost
+  :type: String
+monit.login_user:
+  :default: admin
+  :type: String
+monit.login_pass:
+  :default: monit
+  :type: String
+monit.allowed_hosts:
+  :default:
+  - localhost
+  :type: Array
+monit.httpd_enabled:
+  :default: true
+  :type: TrueClass
+monit.config_dir:
+  :default: /etc/monit
+  :type: String
+monit.conf.d_dir:
+  :default: {}
+  :type: Hash
+monit.service_bin:
+  :default: /usr/sbin/service
+  :type: String
+monit.config_file:
+  :default: '#{node["monit"]["config_dir"]}/monitrc'
+  :type: String
+monit.notify_email:
+  :default: 
+  :type: NilClass
+monit.mail_format.subject:
+  :default: $SERVICE $EVENT
+  :type: String
+monit.mail_format.from:
+  :default: monit@example.com
+  :type: String
+monit.mail_format.message:
+  :default: |
+    Monit $ACTION $SERVICE at $DATE on $HOST: $DESCRIPTION.
+    Yours sincerely,
+    monit
+  :type: String
