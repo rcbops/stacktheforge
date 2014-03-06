@@ -258,6 +258,21 @@ def get_attr_value(hash, dotted_name)
   end
 end
 
+# convert_nil
+#
+# examine variable and return pretty-printable string for empty or nil types
+#
+def convert_nil(obj)
+  if obj.class == NilClass
+    'nil'
+  elsif obj.class == String and obj.empty?
+    "''"
+  else
+    obj
+  end
+end
+
+
 #
 # parse ARGV
 #
@@ -489,8 +504,8 @@ yaml_names.each do |n|
     ours   = get_attr_value(yaml_reconstructed, n)
     theirs = get_attr_value(latest_tree_final, n)
     if ours != theirs
-      puts "#{yellow(n)}: #{ours.nil? ? "nil" : ours} (#{cyan(ours.class)})" +
-           " => #{theirs.nil? ? "nil" : theirs} (#{cyan(theirs.class)})"
+      puts "#{yellow(n)}: #{convert_nil(ours)} (#{cyan(ours.class)})" +
+           " => #{convert_nil(theirs)} (#{cyan(theirs.class)})"
     end
   else
     puts red("#{n} is missing!")
