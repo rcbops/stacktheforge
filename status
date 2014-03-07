@@ -1,0 +1,9 @@
+Current status, next steps:
+Complete Nova and Keystone Attribute conversion trello cards.
+Use default attr (based on RCBOps support wiki default for havana/neutron) - add in SF equivalency.
+Compare running configuration options from the services when using RCBOps/StackForge (dump of running services. map baseline)
+Test a conversion from RCBOps install to StackForge cookbooks.
+Look at steps required to make the above go!
+
+In the interim:
+Continue to run the attribute comparison script (in this repo) - which will compare attributes so that if we come back to this it won't be a lot of work to get back into it.
