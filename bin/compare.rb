@@ -25,7 +25,13 @@ NAME_MAP = {
   'swift-lite'   => 'object-storage',
 }
 
+# common cookbook and its attribute files
 COOKBOOK_COMMON = 'cookbook-openstack-common'
+COMMON_FILES = %w{
+  master/attributes/default.rb
+  master/attributes/database.rb
+  master/attributes/messaging.rb 
+}
 
 # ansi colors
 RED="\e[31m"
@@ -179,13 +185,14 @@ def rescope_vars(content, append='_new')
     line.gsub!(/platform_family/, '@platform_family')
 
     # regex to identify node[][]..[] variables
-    node_regex = %r{[^'"](node(\[['"][^'"]+['"]\]){1,})}
+    node_regex = %r{[^'"](node((\[['"][^'"]+['"]\]){1,}))}
 
     while line =~ node_regex
-      node = $1                       # grab the attribute
-      q = (node =~ /'/) ? '"' : "'"   # choose appropriate quotes to use
-      defanged =  q + node + q        # surround with quotes
-      line.gsub!(/#{Regexp.quote(node)}/, defanged)
+      node = $1                       # grab the whole attribute
+      keys = $2                       # grab all the subkeys
+      #q = (node =~ /'/) ? '"' : "'"   # choose appropriate quotes to use
+      #defanged =  q + node + q        # surround with quotes
+      line.gsub!(/#{Regexp.quote(node)}/, "@default#{append}#{keys}")
     end
     memo << line
   end
@@ -407,7 +414,11 @@ end
 # fetch latest attributes files from github
 #
 latest_content = fetch_raw(cookbook)
-latest_common  = fetch_raw(COOKBOOK_COMMON)
+latest_common  = []
+COMMON_FILES.each do |path|
+  latest_common << fetch_raw(COOKBOOK_COMMON, path)
+  latest_common.flatten!
+end
 
 #
 # rescope variables and write new files
